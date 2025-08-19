@@ -3,12 +3,12 @@ cover: ../../.gitbook/assets/image (1) (1) (1) (1).png
 coverY: 0
 ---
 
-# 🪽 Custom Elytras (1.21.2+)
+# 🪽 自定义鞘翅 (1.21.2+)
 
-This is a sub-feature of using COMPONENT based CustomArmor, letting you make custom textured elytras.\
-The pattern for adding it is exactly the same as explained in [CustomArmor](components.md)-section, with some slight differences. The Equippable-Component model-property is suffixed with \_elytra, and the itemid follows the scheme `armorname_elytra`&#x20;
+这是基于 COMPONENT 自定义盔甲的一个子功能，允许你制作自定义纹理的鞘翅。
+添加它的规则与 [自定义盔甲](components.md) 部分所述完全相同，只是有一些细微区别。Equippable-Component 的 model 属性需要加上后缀 \_elytra，而 itemid 遵循 `armorname_elytra` 的命名规则。
 
-Here is a config example:
+下面是一个配置示例：
 
 ```yaml
 forest_elytra:
@@ -22,4 +22,4 @@ forest_elytra:
       model: nexo:forest_elytra
 ```
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Forest Elytra included with Nexo</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Nexo 自带的森林鞘翅</p></figcaption></figure>

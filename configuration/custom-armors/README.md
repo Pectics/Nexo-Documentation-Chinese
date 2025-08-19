@@ -4,16 +4,16 @@ cover: >-
 coverY: 0
 ---
 
-# ⛑️ Custom Armors
+# ⛑️ 自定义盔甲
 
-Just like other items, armor have a texture for when it is held or in your inventory, but also a texture for when a player equips it.\
-Nexo comes with two ways to add custom armor: COMPONENT & TRIMS.\
-COMPONENT is for all 1.21.2+ servers and is the optimal choice for all supported servers.\
-TRIMS is designed around the Armor-Trim system added in Minecraft 1.20, and will not work on earlier versions.
+与其他物品一样，盔甲在手持或位于物品栏时有一个纹理，在玩家装备时也有一个纹理。
+Nexo 提供了两种添加自定义盔甲的方式：COMPONENT 和 TRIMS。
+COMPONENT 适用于所有 1.21.2+ 服务器，是所有受支持服务器的最佳选择。
+TRIMS 基于 Minecraft 1.20 中引入的盔甲修饰系统设计，在更早的版本中无法使用。
 
-**Component** method is recommended for all servers 1.21.2+ in every scenario.\
-There is no benefit to using Trims or Shader-methods for these servers.
+**Component** 方法在所有 1.21.2+ 的服务器中推荐使用，适用于所有场景。
+在这些服务器上使用 Trims 或 Shader 方法没有任何优势。
 
-**Armor-Trim** method is recommended if your server is 1.20-1.21.1 and only allows 1.20+ players.\
-It has the benefit of not breaking with shaders / requiring extra mods to work.\
-It requires the use of CHAINMAIL armor
+**Armor-Trim** 方法推荐在服务器版本为 1.20-1.21.1 且仅允许 1.20+ 玩家时使用。
+它的好处是不会与着色器冲突 / 不需要额外模组即可运行。
+该方法要求使用锁链盔甲 (CHAINMAIL armor)。

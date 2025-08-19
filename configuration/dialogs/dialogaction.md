@@ -17,13 +17,13 @@ layout:
 
 # DialogAction
 
-DialogActions are divided in two types, **Static & Dynamic**.\
-Static-actions do not depend on the value of an input field.\
-Dynamic-actions can be used in conjunction with the value of input fields.
+DialogAction 分为两类：**静态 (Static) 与 动态 (Dynamic)**。
+静态动作不依赖输入字段的值。
+动态动作可以结合输入字段的值来使用。
 
-### Static Actions
+### 静态动作
 
-Types of static-actions are [OPEN\_URL](https://minecraft.wiki/w/Dialog#open_url), [RUN\_COMMAND](https://minecraft.wiki/w/Dialog#run_command), [SUGGEST\_COMMAND](https://minecraft.wiki/w/Dialog#suggest_command), [CHANGE\_PAGE](https://minecraft.wiki/w/Dialog#change_page), [CLIPBOARD](https://minecraft.wiki/w/Dialog#copy_to_clipboard), [SHOW\_DIALOG](https://minecraft.wiki/w/Dialog#show_dialog) and [CUSTOM](https://minecraft.wiki/w/Dialog#custom)
+静态动作的类型包括 [OPEN\_URL](https://minecraft.wiki/w/Dialog#open_url)、[RUN\_COMMAND](https://minecraft.wiki/w/Dialog#run_command)、[SUGGEST\_COMMAND](https://minecraft.wiki/w/Dialog#suggest_command)、[CHANGE\_PAGE](https://minecraft.wiki/w/Dialog#change_page)、[CLIPBOARD](https://minecraft.wiki/w/Dialog#copy_to_clipboard)、[SHOW\_DIALOG](https://minecraft.wiki/w/Dialog#show_dialog) 和 [CUSTOM](https://minecraft.wiki/w/Dialog#custom)。
 
 ```yaml
 action:
@@ -31,8 +31,8 @@ action:
   command: "nexo inventory"
 ```
 
-### Dynamic Actions
+### 动态动作
 
-Dynamic actions are actions that can be used with values of input fields in the dialog.\
-For example run a command with text from the DialogInput Text field\
-The types of dynamic actions are [DYNAMIC\_RUN\_COMMAND](https://minecraft.wiki/w/Dialog#dynamic/run_command) & [DYNAMIC\_CUSTOM](https://minecraft.wiki/w/Dialog#dynamic/custom)
+动态动作是指那些可以结合对话框中输入字段的值来使用的动作。
+例如，可以运行一个命令，并将 DialogInput 文本字段中的文字作为参数。
+动态动作的类型包括 [DYNAMIC\_RUN\_COMMAND](https://minecraft.wiki/w/Dialog#dynamic/run_command) 和 [DYNAMIC\_CUSTOM](https://minecraft.wiki/w/Dialog#dynamic/custom)。

@@ -1,25 +1,25 @@
-# 📦 Custom Block Mechanics
+# 📦 自定义方块机制
 
-Nexo has several options for making Custom Blocks.\
-They all come with a few restrictions due to the nature of how custom blocks can be implemented.\
-NOTEBLOCK type custom blocks are for normal 1x1x1 blocks like Stone, Dirt etc...\
-It uses the vanilla NoteBlock and thus disables most of the redstone functionality for it\
-\
-CHORUSBLOCK type custom blocks are based on the Chorus Plant block.\
-It is mainly used for transparent blocks, like leaves.\
-The hitbox is not a normal 1x1x1 so it is adviced to only use this for transparent block needs\
-\
-STRINGBLOCK type custom blocks are for plants, decoration etc...\
-It uses the vanilla TripWire block and thus disables most of the redstone functionality for it
+Nexo 提供了多种方式来创建自定义方块。
+由于自定义方块的实现方式限制，它们都有一定的约束。
+**NOTEBLOCK 类型**自定义方块适用于普通的 1x1x1 方块，例如石头、泥土等……
+它基于原版音符盒实现，因此会禁用大部分与其相关的红石功能。
+
+**CHORUSBLOCK 类型**自定义方块基于紫颂植物方块。
+它主要用于透明方块，例如树叶。
+其碰撞箱并不是标准的 1x1x1，因此建议仅在需要透明方块时使用。
+
+**STRINGBLOCK 类型**自定义方块适用于植物、装饰等……
+它基于原版绊线方块实现，因此会禁用大部分与其相关的红石功能。
 
 {% hint style="danger" %}
-On all Paper-Servers you are HEAVILY recommended to disable block-updates for the types of custom blocks you plan to use.\
-These can be found in \`MyServerFolder/configs/paper-global.yml\`
+在所有 Paper 服务器上，强烈建议你为计划使用的自定义方块类型禁用方块更新。
+相关设置可在 `MyServerFolder/configs/paper-global.yml` 中找到。
 {% endhint %}
 
 {% hint style="warning" %}
-Due to the nature of Custom Blocks, these for the most part completely disable the original blocks vanilla functionality.\
-NOTEBLOCK-type does have an option to "reimplement" the functionality, but it has some minor flaws.\
-STRINGBLOCK-type completely disables vanilla functionality.\
-If you want either of these, you will likely have to disable these mechanics.
+由于自定义方块的特性，它们大多数情况下会完全禁用原版方块的功能。
+NOTEBLOCK 类型有一个“重新实现”原版功能的选项，但存在一些小问题。
+STRINGBLOCK 类型则会完全禁用原版功能。
+如果你需要保留这些功能，很可能就得禁用对应的机制。
 {% endhint %}

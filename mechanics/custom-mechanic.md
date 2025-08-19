@@ -1,28 +1,27 @@
 ---
-description: >-
-  This mechanism allows you to realize an extremely customizable mechanism
-  without programming
+description: 该机制允许你在无需编程的情况下实现一个高度可自定义的机制
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966825489098489856/unknown.png
 coverY: 0
 ---
 
-# Custom Mechanic
+# 自定义机制 (Custom Mechanic)
 
-## How does it work?
+## 它是如何工作的？
 
-This mechanic is for items only and does not work with blocks/furniture.\
-For that check the [clickAction mechanic](clickaction-mechanic.md). The mechanics let you create subsections composed of 3 parts:
+该机制仅适用于物品，不适用于方块或家具。
+方块/家具请查看 [点击动作机制](clickaction-mechanic.md)。
+自定义机制允许你创建由三部分组成的小节：
 
-* **Event**: when is this mechanic triggered? e.g. when you right-click on a block
-* **Conditions**: a set of conditions that must be satisfied. e.g. having a permission
-* **Actions**: a set of actions to perform. e.g. send a command or a message
+* **Event（事件）**：该机制何时触发？例如，当你右键点击方块时
+* **Conditions（条件）**：必须满足的一组条件。例如，拥有某个权限
+* **Actions（动作）**：要执行的一组动作。例如，发送一条指令或消息
 
 {% hint style="info" %}
-An optional settings called one\_usage allows you to imitate the use of an item at 1.
+一个名为 one\_usage 的可选设置可以让你模拟物品的一次性使用。
 {% endhint %}
 
-## A comprehensive example
+## 一个完整的示例
 
 ```yaml
 myitem:
@@ -37,25 +36,25 @@ myitem:
           - "[console] give <player> cooked_beef 1"
 ```
 
-In this example, the subsection `test` defines a custom mechanic triggered when someone right click (on a block or in the air).\
-If this player has the permission `example.permission`, the console will perform the give command and replace \<player> by the player name.\
-The item won't be consumed (one\_usage: false).
+在此示例中，小节 `test` 定义了一个自定义机制，当有人右键点击（无论是方块还是空气）时触发。
+如果该玩家拥有 `example.permission` 权限，控制台将执行 give 指令，并将 \<player> 替换为玩家名字。
+物品不会被消耗（one\_usage: false）。
 
-## Available events
+## 可用事件
 
-### CLICK:click\_type:target\_type[^1], DROP[^2], PICKUP[^3], BREAK[^4], EQUIP[^5], UNEQUIP[^6], INV\_CLICK[^7], DEATH[^8]
+### CLICK\:click\_type\:target\_type, DROP[^2], PICKUP[^3], BREAK[^4], EQUIP[^5], UNEQUIP[^6], INV\_CLICK[^7], DEATH[^8]
 
-## Available conditions
+## 可用条件
 
-### HAS\_PERMISSION:the.permission
+### HAS\_PERMISSION\:the.permission
 
-**the.permission**: `The permission required by the player using the item`
+**the.permission**: `使用该物品的玩家所需的权限`
 
-## Available actions
+## 可用动作
 
 ### Command-Action
 
-This action lets you run a command either from console or as the player
+该动作允许你以控制台或玩家的身份运行命令
 
 ```yaml
 myitem:
@@ -69,7 +68,7 @@ myitem:
 
 ### Message-Action
 
-This action lets you send a Message to the player with a customizable message
+该动作允许你向玩家发送一条可自定义的消息
 
 ```yaml
 myitem:
@@ -83,7 +82,7 @@ myitem:
 
 ### ActionBar-Action
 
-This action lets you send an ActionBar to the player with a customizable message
+该动作允许你向玩家发送一条可自定义的 ActionBar 消息
 
 ```yaml
 myitem:
@@ -97,14 +96,14 @@ myitem:
 
 ### Sound-Action
 
-This action lets you play a sound at a location or at a target with customizable values
+该动作允许你在某个位置或目标处播放一个音效，并支持自定义参数
 
-**source -** The source of the sound ([List of sources](https://jd.advntr.dev/api/4.21.0/net/kyori/adventure/sound/Sound.Source.html))\
-**volume** - The volume to play the sound with\
-**pitch** - The pitch to play the sound with\
-**self** - If the sound sound be played at the Player and not at a location
+**source -** 音效来源 ([来源列表](https://jd.advntr.dev/api/4.21.0/net/kyori/adventure/sound/Sound.Source.html))
+**volume** - 播放音效的音量
+**pitch** - 播放音效的音调
+**self** - 如果为 true，则在玩家处播放，而不是在某个位置播放
 
-Followed by the sound-key to play
+紧随其后的是要播放的音效键值
 
 ```yaml
 myitem:
@@ -116,21 +115,21 @@ myitem:
           - "{source=AMBIENT volume=0.1 pitch=1} [sound] namespace:soundkey"
 ```
 
-[^1]: Called when you click with the item.
+[^1]: 当你使用物品点击时触发。
 
-    **mouse\_click\_type**: `[ right, left, all ]`\
+    **mouse\_click\_type**: `[ right, left, all ]`
     **target\_type**: `[ block, air, all ]`
 
-[^2]: Called when you drop the item.
+[^2]: 当你丢弃物品时触发。
 
-[^3]: Called when you pick up the item.
+[^3]: 当你拾取物品时触发。
 
-[^4]: Called when a player breaks an item.
+[^4]: 当玩家破坏物品时触发。
 
-[^5]: Called when a player equips an item.
+[^5]: 当玩家装备物品时触发。
 
-[^6]: Called when a player unequips an item.
+[^6]: 当玩家卸下物品时触发。
 
-[^7]: Called when a player clicks an item in an inventory.
+[^7]: 当玩家在物品栏中点击物品时触发。
 
-[^8]: Called when a player dies and would normally drop the given item.
+[^8]: 当玩家死亡并且通常会掉落该物品时触发。

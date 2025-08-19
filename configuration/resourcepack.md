@@ -2,13 +2,13 @@
 icon: file-zipper
 ---
 
-# 📂 ResourcePack
+# 📂 资源包
 
-### ResourcePack-Structure
+### 资源包结构
 
-The ResourcePack in Nexo follows the vanilla structure but also letting you import and automatically merge full ResourcePacks\
-This is in an effort to make importing third-party ResourcePacks a lot easier.\
-Below is an example of the new structure.
+Nexo 中的资源包遵循原版结构，但同时允许你导入并自动合并完整的资源包。
+这样做是为了让导入第三方资源包更加方便。
+下面是新结构的示例。
 
 {% code title="" %}
 ```
@@ -35,29 +35,29 @@ Below is an example of the new structure.
 ```
 {% endcode %}
 
-Goal is to let users merge resourcepacks in via either ZIPs or directories, outside of the normal assets folder.\
-This would dynamically merge in any conflicting files, like a paper.json or sounds.json, instead of migrating it to oraxen-configs to be generated.\
-Meaning that pack-import instructions on your end now boils down to:\
-Put `my_pack.zip` inside `Nexo/pack/external_packs`
+目标是允许用户通过 ZIP 或目录的方式合并资源包，而不局限于普通的 assets 文件夹。
+这会动态合并任何冲突的文件，例如 paper.json 或 sounds.json，而不是迁移到 oraxen 配置里重新生成。
+这意味着你的资源包导入说明现在可以简化为：
+把 `my_pack.zip` 放到 `Nexo/pack/external_packs` 文件夹里即可。
 
-### Obfuscation
+### 混淆
 
-Nexo has a built in way to "obfuscate" the content of your resource-pack.\
-This is done by randomizing all file-names in an attempt to make it very hard and annoying to try and take stuff from it for pirates.\
-It comes with three modes, `NONE`, `SIMPLE`, `FULL`\
-\
-**NONE** - Self-explanatory, does not obfuscate pack in any way\
-**SIMPLE** - Obfuscates filenames only\
-`namespace:model/path.json` -> `namespace:bba2d60b-8e3e-4051-9734-fef92766777f`\
-**FULL** - Obfuscates namespace & filename;\
+Nexo 内置了一种“混淆”资源包内容的方法。
+它会随机化所有文件名，以尽可能让盗版者难以直接窃取内容。
+它有三种模式：`NONE`、`SIMPLE`、`FULL`
+
+**NONE** - 顾名思义，不做任何混淆
+**SIMPLE** - 仅混淆文件名
+`namespace:model/path.json` -> `namespace:bba2d60b-8e3e-4051-9734-fef92766777f`
+**FULL** - 混淆命名空间和文件名;
 `namespace:model/path.json` -> `c491303e-ba1e-4037-a59d-62b5fdfb6bb8:bba2d60b-8e3e-4051-9734-fef92766777f`
 
-### PackSquash-Integration
+### PackSquash 集成
 
-Nexo allows you to run PackSquash on the resourcepack without manually reuploading the pack.\
-Simply download the latest [PackSquash](https://github.com/ComunidadAylas/PackSquash/releases) build and drop it in `plugins/Nexo/pack/packsquash` .\
-Then drop your **packsquash.toml** in the same directory, an example can be found [here](https://gist.github.com/Boy0000/92149d2704b6086473fccb4d771c42b4).\
-If you want it in another location, you can specify a path for the binary & settings
+Nexo 允许你在不需要手动重新上传的情况下对资源包运行 PackSquash。
+只需下载最新的 [PackSquash](https://github.com/ComunidadAylas/PackSquash/releases) 构建版本并将其放入 `plugins/Nexo/pack/packsquash`。
+然后将 **packsquash.toml** 放在同一目录下，可以在 [这里](https://gist.github.com/Boy0000/92149d2704b6086473fccb4d771c42b4) 找到示例。
+如果你希望它在另一个位置，可以为二进制文件和配置文件指定路径。
 
 ```yaml
 Pack:
@@ -68,40 +68,42 @@ Pack:
       settings_path: plugins/Nexo/pack/packsquash/packsquash.toml
 ```
 
-To enable Nexo's PackSquash-integration simply enable `Pack.generation.packsquash.enabled` in settings.yml. Then when the pack generates, it will start the PackSquash process. If it suceeds you should see somehting like the below.
+要启用 Nexo 的 PackSquash 集成，只需在 settings.yml 中启用 `Pack.generation.packsquash.enabled`。
+然后当资源包生成时，它会启动 PackSquash 进程。
+如果成功，你应该会看到如下的结果。
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>Example of successful PackSquash process</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption><p>PackSquash 成功运行的示例</p></figcaption></figure>
 
-If it failed you should see some detailed info about which file and a reason for it.\
-If Nexo's debug-mode is enabled, it will output info about all successful files aswell
+如果失败，你将会看到详细的信息，包括具体的文件和失败原因。
+如果启用了 Nexo 的 debug 模式，它还会输出所有成功处理文件的信息。
 
 {% hint style="info" %}
-Depending on your TOML-configuration & ResourcePack size & complexity, the PackSquash process might take some time. Nexo will cache the output so that if the ResourcePack does not change, the PackSquash process will not need to be ran again
+根据你的 TOML 配置、资源包的大小和复杂度，PackSquash 过程可能需要一些时间。Nexo 会缓存输出结果，因此如果资源包没有更改，PackSquash 过程就不需要再次运行。
 {% endhint %}
 
 ### PackServer
 
-Nexo has 3 types of ways to upload & dispatch the ResourcePack it generates\
-**POLYMATH** - A dedicated server hosted by Nexo-Team that your server uploads the pack to\
-This server is currently hosted in Germany\
-**SELFHOST** - Server-Instance hosted on your machine. Requires you to configure the `public_address` and ensure a given port is open.\
-**LOBFILE** - Server hosted by [LobFile](https://lobfile.com/), needs a `api_key`in settings.yml\
-The API is also set up so that one could extend the `NexoPackServer-Interface` and create ones own.
+Nexo 提供了 3 种方式来上传和分发它生成的资源包
+**POLYMATH** - 由 Nexo 团队托管的专用服务器，你的服务器会将资源包上传到这里
+该服务器目前位于德国
+**SELFHOST** - 在你自己的机器上运行的本地服务器。需要你配置 `public_address` 并确保指定端口开放
+**LOBFILE** - 由 [LobFile](https://lobfile.com/) 托管的服务器，需要在 settings.yml 中配置 `api_key`
+API 同时也支持扩展 `NexoPackServer-Interface`，以便你可以实现自定义方案。
 
-### Cross-Server/Proxy ResourcePacks
+### 跨服/代理资源包
 
-Nexo by default has no support for handling resourcepacks across a velocity/bungee network.\
-This is however not inherently needed, as the player will keep the resourcepack when swapping servers, unless the new server sends a new resourcepack.
+Nexo 默认不支持在 velocity/bungee 网络下处理资源包。
+不过这并非必须，因为玩家在切换服务器时会保留资源包，除非新服务器发送了新的资源包。
 
-Assuming you have a Server A, Server B & Server C:
+假设你有服务器 A、B 和 C：
 
-1. Set Pack.server to NONE for Server B & Server C. That way the player joins Server A and loads the resourcepack. When they then swap to Server B or C, the resourcepack from Server A will not be unloaded. The downside here is that if the player joins Server A from B or C, they will get sent the resourcepack again and load it
-2. Use a plugin like [OneTimePack](https://www.spigotmc.org/resources/onetimepack-avoid-double-sending-the-same-pack-bungeecord-velocity.106749/) on your Velocity/Bungee server. These plugins check the ResourcePack-request and compare them. If the pack is the same it will skip it.\
-   If taking this approach make sure to either disable [obfuscation](resourcepack.md#obfuscation) for your NexoPack, or enable caching and manually copy over the .deobfCacheResourcepack folder to all servers
+1. 将服务器 B 和 C 的 Pack.server 设置为 NONE。这样玩家进入服务器 A 时会加载资源包，当他们切换到服务器 B 或 C 时，不会卸载服务器 A 的资源包。缺点是如果玩家从 B 或 C 再次进入 A，他们会重新接收并加载资源包。
+2. 在 Velocity/Bungee 服务器上使用类似 [OneTimePack](https://www.spigotmc.org/resources/onetimepack-avoid-double-sending-the-same-pack-bungeecord-velocity.106749/) 的插件。这类插件会检查资源包请求并进行对比，如果是相同的资源包就会跳过发送。
+   如果采用这种方式，请确保要么为你的 Nexo 资源包禁用 [混淆](resourcepack.md#obfuscation)，要么启用缓存并手动将 `.deobfCacheResourcepack` 文件夹复制到所有服务器。
 
-### Importing
+### 导入
 
-Nexo lets you import Third-Party ResourcePacks in several ways.\
-The recommended one is shown above, by adding a directory or .zip to \`plugins/Nexo/pack/external\_packs\`\
-There is also `Plugin.import.from_location` in settings.yml, letting you specify a directory/zip relative to your plugins folder\
-There is also `Plugin.import.from_url` in settings.yml, letting you specify any url that Nexo will download a directory/zip from and include
+Nexo 支持多种方式导入第三方资源包。
+推荐的方式如上所述：将目录或 .zip 文件放入 `plugins/Nexo/pack/external_packs`。
+此外，你还可以在 settings.yml 中使用 `Plugin.import.from_location` 来指定相对于插件目录的文件夹/zip 文件。
+你还可以使用 `Plugin.import.from_url` 在 settings.yml 中指定任意 URL，Nexo 会从该地址下载目录或 zip 文件并导入。

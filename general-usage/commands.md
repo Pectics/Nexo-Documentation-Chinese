@@ -1,87 +1,87 @@
 ---
-description: A simple explanation to use the plugin commands
+description: 插件指令的简单说明
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966827022758330398/unknown.png
 coverY: 0
 ---
 
-# ⌨️ Commands
+# ⌨️ 指令
 
-## General informations
+## 基本信息
 
-All the nexo-commands can be found under `/nexo`
+所有 Nexo 指令都在 `/nexo` 下。
 
-## Get the items
+## 获取物品
 
-### Nexo-Inventory Command
+### Nexo-Inventory 指令
 
-The main benefit of this method is that it allows you to see all the items at the same time in categories based on your `Nexo/items/filename.yml`\
-You can grab copies of items here but cannot give it to other players.
+这种方法的主要优点是它可以让你按 `Nexo/items/filename.yml` 分类同时查看所有物品。
+你可以在这里获取物品的副本，但不能给予其他玩家。
 
-#### Usage: `/nexo inventory` or `/nexo inv`
+#### 用法: `/nexo inventory` 或 `/nexo inv`
 
-#### Permission: `nexo.command.inventory`
+#### 权限: `nexo.command.inventory`
 
-### Item-Give Command
+### Item-Give 指令
 
-This command will be mainly useful if you want to give an item to another player or when you want to automate the give
+这个指令主要用于你想要给其他玩家物品，或者你想要实现自动发放物品的时候。
 
-#### Usage: `/nexo give <item> [amount] [player]`
+#### 用法: `/nexo give <item> [amount] [player]`
 
-#### Permission: `nexo.command.give`
+#### 权限: `nexo.command.give`
 
-## Recipe-Commands
+## 配方指令
 
-This command allows you to add new recipes to the configuration directly from the game using recipes builder. For more information on how to use it, see [Recipes](recipes.md).
+这个指令允许你直接在游戏中使用配方生成器将新配方添加到配置中。更多使用方法请查看 [配方](recipes.md)。
 
-#### Usage:
-
-```yaml
-/nexo recipe builder <builder> # Creates a recipe builder of type <builder> and opens it
-/nexo recipe save <name> # Saves your recipe with name <name>
-/nexo recipe show all # Show you the loaded recipes
-/nexo recipe show <recipe> # Show you one recipe
-```
-
-#### Permission: `nexo.command.recipes`
-
-## Pack-Command
-
-This command allows you to send the pack to a group of players.\
-Useful if the automatic sending failed or for testing
-
-#### Usage: `/nexo pack <player>`
-
-#### Permission: `nexo.command.pack`
-
-## Item-Info Command
-
-This command allows you to print general info about a NexoItem for debugging
-
-#### Usage: `/nexo iteminfo <itemid>`
-
-#### Permission: `nexo.command.iteminfo`
-
-## Reload-Command
-
-This command allows you to reload Nexo configurations.\
-Reloading items updates any changes you might have made, and updates all old copies players might have.\
-Reloading pack regenerates the resourcepack, and if `Pack.dispatch.send_on_reload` is enabled in `settings.yml`, will be dispatched to all players.
-
-#### Usage
+#### 用法:
 
 ```yaml
-/nexo reload # Reloads items configuration, Reloads recipes configuration, regenerates the pack and upload it
-/nexo reload items # Reloads items configuration
-/nexo reload pack # Regenerates resourcepack and upload it
-/nexo reload recipes # Reloads recipes configuration
+/nexo recipe builder <builder> # 创建一个 <builder> 类型的配方生成器并打开它
+/nexo recipe save <name> # 将你的配方保存为 <name>
+/nexo recipe show all # 显示已加载的所有配方
+/nexo recipe show <recipe> # 显示某一个配方
 ```
 
-#### Permission: `nexo.command.reload`
+#### 权限: `nexo.command.recipes`
 
-## Debug-Command
+## Pack 指令
 
-This command just toggles the debug-state of Nexo.\
-In case you run into a bug or an error, you might be asked to toggle this to provide support with a more full error-log of the bug.
+这个指令允许你将资源包发送给一组玩家。
+当自动发送失败或者用于测试时很有用。
 
-#### Permissions: `nexo.command.debug`
+#### 用法: `/nexo pack <player>`
+
+#### 权限: `nexo.command.pack`
+
+## Item-Info 指令
+
+这个指令允许你打印 NexoItem 的常规信息，用于调试。
+
+#### 用法: `/nexo iteminfo <itemid>`
+
+#### 权限: `nexo.command.iteminfo`
+
+## Reload 指令
+
+这个指令允许你重新加载 Nexo 的配置。
+重新加载物品会更新你所做的更改，并更新玩家手中的所有旧副本。
+重新加载资源包会重新生成资源包，如果在 `settings.yml` 中启用了 `Pack.dispatch.send_on_reload`，则会分发给所有玩家。
+
+#### 用法
+
+```yaml
+/nexo reload # 重新加载物品配置，重新加载配方配置，重新生成资源包并上传
+/nexo reload items # 重新加载物品配置
+/nexo reload pack # 重新生成资源包并上传
+/nexo reload recipes # 重新加载配方配置
+```
+
+#### 权限: `nexo.command.reload`
+
+## Debug 指令
+
+这个指令仅用于切换 Nexo 的调试状态。
+当你遇到 bug 或错误时，可能会被要求开启它，以便提供更完整的错误日志。
+
+#### 权限: `nexo.command.debug`

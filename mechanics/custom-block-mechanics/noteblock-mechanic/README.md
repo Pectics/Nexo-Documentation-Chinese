@@ -1,25 +1,26 @@
 ---
-description: How to add your own blocks to the game
+description: 如何在游戏中添加你自己的方块
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966827878706708560/unknown.png
 coverY: 0
 ---
 
-# 🎶 NoteBlock Mechanic
+# 🎶 音符盒机制 (NoteBlock Mechanic)
 
 {% hint style="info" %}
-NOTEBLOCK-type allows for up-to **1149** custom blocks.\
-One per `custom_variation`
+NOTEBLOCK 类型最多允许 **1149** 种自定义方块。
+每个方块对应一个 `custom_variation`
 {% endhint %}
 
-## How to create a simple block?
+## 如何创建一个简单方块？
 
-### Parent Models
+### 父模型 (Parent Models)
 
-The Nexo-item root configuration is the same as for any item (you can use any material like a diamond for example) and set an itemname, etc.\
-It is recommended to not use a block for your material, sticking to such materials as PAPER\
-For the pack section you can use your own model or texture for your block.\
-If all you have is a texture, you can specify a parent\_model and Nexo will generate the needed files for you. A Normal 1x1x1 block uses "block/cube\_all"
+Nexo 物品的根配置与普通物品相同（例如你可以用钻石等任意材料），并设置一个 itemname 等。
+建议不要直接使用方块作为 material，而是使用像 PAPER 这样的材料。
+在 Pack 部分，你可以为方块指定自定义模型或纹理。
+如果你只有纹理，可以指定一个 `parent_model`，Nexo 会自动为你生成所需文件。
+一个标准的 1x1x1 方块通常使用 `"block/cube_all"`。
 
 ```yaml
 my_block:
@@ -30,12 +31,12 @@ my_block:
     texture: my_block_texture.png
 ```
 
-Each of these parent models take a different amount of textures.\
-`block/cube_all` takes 1 texture, `block/cube_column` takes 2, `block/cross` takes 1, `block/orientable` takes 3 and `block/orientable_vertical` takes 2.\
-For example, if you want to make a log block using the Directional Block mechanic, you should use `block/cube_column`.
+不同的父模型需要的纹理数量不同。
+`block/cube_all` 需要 1 张纹理，`block/cube_column` 需要 2 张，`block/cross` 需要 1 张，`block/orientable` 需要 3 张，`block/orientable_vertical` 需要 2 张。
+例如，如果你想用方向性方块机制制作一个木头方块，你应该使用 `block/cube_column`。
 
-All the vanilla models can be found at [MCAsset](https://mcasset.cloud/1.21.3/assets/minecraft/models/block). Find the one you want to use for your usecase.\
-Recommend using a "texture map" in the config for multi-texture setups.
+所有原版模型可以在 [MCAsset](https://mcasset.cloud/1.21.3/assets/minecraft/models/block) 找到。选择一个适合你使用场景的。
+推荐在配置中使用“纹理映射”来处理多纹理设置。
 
 ```yaml
 my_block:
@@ -48,26 +49,27 @@ my_block:
       top: my_top_texture.png
 ```
 
-### CustomBlock Mechanic configuration
+### 自定义方块机制配置
 
-To use this mechanic you need to tell to Nexo which model to use (to use the generated one, just put the name id of your item).\
-You then need to use custom\_variation which is not already used by another block.\
-Valid custom\_variation is 1..1149
+要使用此机制，你需要告诉 Nexo 使用哪个模型（如果使用自动生成的模型，只需写物品的名称 ID）。
+接着需要指定一个未被其他方块占用的 `custom_variation` 值。
+合法的 `custom_variation` 范围是 1..1149。
 
-<pre class="language-yaml"><code class="lang-yaml">my_block:
-<strong>  Mechanics:
-</strong>    custom_block:
+```yaml
+my_block:
+  Mechanics:
+    custom_block:
       type: NOTEBLOCK
       custom_variation: 2
       model: my_block
       drop:
         silktouch: false 
         minimal_type: STONE
-</code></pre>
+```
 
-### Custom Sounds
+### 自定义音效
 
-Furniture, like custom blocks, can have custom sounds
+与自定义方块一样，家具也可以有自定义音效。
 
 ```yaml
 myitem:
@@ -76,15 +78,15 @@ myitem:
       block_sounds:
         place_sound: block.stone.place
         break_sound: block.stone.break
-        hit_sound: my.custom.hitsound     # Custom sound as defined in Nexo/sounds.yml
-        step_sound: my.custom.stepsound   # Requires a sound-file in the Nexo/pack-folder aswell
+        hit_sound: my.custom.hitsound     # 在 Nexo/sounds.yml 中定义的自定义音效
+        step_sound: my.custom.stepsound   # 需要在 Nexo/pack 文件夹中放置音频文件
         fall_sound: my.custom.fallsound
 ```
 
-All the volume and pitch values are set to be what Minecraft uses for blocks normally.\
-If you want to change the volume or pitch, you can do so by using the format below.\
-Keep in mind these two formats are compatible with eachother.\
-We recommend just use the default one, but the option is there if you want to change it.
+所有音量和音调值默认与 Minecraft 方块一致。
+如果你想修改音量或音调，可以使用以下格式。
+请注意这两种格式是兼容的。
+推荐直接使用默认设置，但你也可以选择修改。
 
 ```yaml
 myitem:
@@ -96,15 +98,15 @@ myitem:
           volume: 1.0
           pitch: 0.2
         break_sound: block.stone.break
-        hit_sound: my.custom.hitsound     # Custom sound as defined in Nexo/sounds.yml
-        step_sound: my.custom.stepsound   # Requires a sound-file in the Nexo/pack-folder aswell
+        hit_sound: my.custom.hitsound     # 在 Nexo/sounds.yml 中定义的自定义音效
+        step_sound: my.custom.stepsound   # 需要在 Nexo/pack 文件夹中放置音频文件
         fall_sound: my.custom.fallsound
 ```
 
-### Customize the breaking speed
+### 自定义破坏速度
 
-You can customize the breaking speed and the most suitable tools with the hardness subsection.\
-`drop.best_tool` dictates the "preferred tool" for this block which further tweaks the speed
+你可以使用 hardness 子配置自定义方块的破坏速度以及最佳工具。
+`drop.best_tool` 定义了该方块的“推荐工具”，这会进一步影响破坏速度。
 
 ```yaml
 my_block:
@@ -113,19 +115,20 @@ my_block:
       type: NOTEBLOCK
       custom_variation: 2
       model: my_block
-      hardness: 20 # this makes it really hard to mine
+      hardness: 20 # 这会让方块非常难以破坏
       drop:
         silktouch: false 
         minimal_type: STONE
         best_tool: PICKAXE
 ```
 
-### Limited placing
+### 限制放置
 
-You can customize what blocks a custom block/furniture can be placed on with `limited_placing` subsection. You can use the `roof`, `floor` and `wall` options to dictate where a block can be placed. By default, all are set to `true`.\
-The `type` specifies if it should only be allowed on or denied on specific blocks.\
-If type is `ALLOW` the block can only be placed on the given blocks.\
-If the type is `DENY` can be placed on all blocks not matching the given blocks.
+你可以通过 `limited_placing` 子配置自定义方块/家具的放置位置。
+可以使用 `roof`、`floor` 和 `wall` 控制是否允许放置在屋顶、地板和墙面。默认情况下，全部为 `true`。
+`type` 定义是只允许 (ALLOW) 还是只禁止 (DENY) 放置在某些方块上。
+如果 `type` 是 `ALLOW`，则只能放置在给定的方块上。
+如果 `type` 是 `DENY`，则可以放置在除给定方块以外的所有方块上。
 
 ```yaml
 amethyst_ore:
@@ -147,14 +150,14 @@ amethyst_ore:
           - ruby_ore
 ```
 
-The `block_tags` can be found at [this page](https://minecraft.fandom.com/wiki/Tag#Block_tags). Useful if you want to allow/deny a group of blocks.\
-The `block_types` are materials. Useful if you want to allow/deny a specific list block.\
-The `nexo_blocks` are blocks defined in the nexo configuration.\
-This allows all custom blocks and furniture in here, but furniture requires a barrier-hitbox.
+`block_tags` 可在 [此页面](https://minecraft.fandom.com/wiki/Tag#Block_tags) 中找到。用于允许/禁止一组方块。
+`block_types` 是具体的材料名称。用于允许/禁止特定方块。
+`nexo_blocks` 是在 Nexo 配置中定义的方块。
+这允许包含所有自定义方块和家具，但家具需要屏障碰撞箱。
 
-### Beacon Base
+### 信标基座
 
-You can also make a custom block work in beacons with the following:
+你也可以让自定义方块作为信标的基座：
 
 {% code lineNumbers="true" %}
 ```yaml
@@ -167,15 +170,15 @@ my_block:
 {% endcode %}
 
 {% hint style="info" %}
-A beacon will "activate" if any noteblock is in the pyramid, but the effect is only given when said noteblock(s) are base\_beacon\_blocks\
-This is because it requires a Datapack that adds noteblocks to the given Tag, but it does not support individual blockstates
+信标在金字塔中检测到任意音符盒时会“激活”，但只有被标记为 `beacon_base_block` 的音符盒才会真正生效。
+这是因为它依赖于一个数据包将音符盒加入指定的 Tag，但它并不支持单独的方块状态。
 {% endhint %}
 
-### Blast-Resistant
+### 抗爆性
 
-You can make your custom-block blast-resistant by adding the following.\
-If unspecified it defaults to false.\
-You can also make your block drop something when it explodes by adding `in_explosion: true`to your Loot like below
+你可以通过以下配置让自定义方块具备抗爆性。
+如果未指定，默认值为 false。
+你也可以在掉落配置中加入 `in_explosion: true`，让方块在爆炸时掉落。
 
 ```yaml
 my_block:
@@ -191,7 +194,8 @@ my_block:
 
 ### BlockLocker
 
-You can use this to allow protection via [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/) Valid protectionTypes are CONTAINER, DOOR, ATTACHABLE
+你可以通过 [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/) 为其添加保护。
+合法的 `protection_type` 有 CONTAINER、DOOR、ATTACHABLE。
 
 ```yaml
 my_block:
@@ -203,16 +207,16 @@ my_block:
         protection_type: CONTAINER
 ```
 
-### Storage
+### 存储
 
-This is a sub-mechanic for furniture and noteblock mechanics, that let you make a custom storage container.\
-Essentially a chest, closet or whatever you might want.
+这是一个家具和音符盒机制的子功能，它允许你制作自定义储物容器。
+本质上可以是一个箱子、衣柜或任意你想要的东西。
 
-There's a few different types: _STORAGE, PERSONAL, ENDERCHEST & DISPOSAL_.\
-**STORAGE** is similar to a normal chest. Anyone can open it and view the content of it.\
-**PERSONAL** is essentially a custom enderchest, letting you edit the row-count and so on.\
-**ENDERCHEST** is literally just the enderchest inventory, but letting you make a custom block/furniture to access it.\
-**DISPOSAL** is a custom trashcan, letting you throw items in it, and they will be deleted when closed.\\
+它有几种类型：*STORAGE, PERSONAL, ENDERCHEST & DISPOSAL*。
+**STORAGE** 类似于普通箱子，任何人都能打开并查看内容。
+**PERSONAL** 类似于自定义末影箱，可以设置行数等参数。
+**ENDERCHEST** 实际上就是末影箱背包，但你可以用自定义方块/家具来访问它。
+**DISPOSAL** 是自定义垃圾桶，你可以把物品扔进去，关闭时它们会被删除。\\
 
 ```yaml
 my_block:
@@ -221,20 +225,20 @@ my_block:
       type: NOTEBLOCK
       storage:
         type: STORAGE
-        rows: 5                             # Default: 6
-        title: "<red>My Storage"            # Default: "Storage"
-        open_sound: entity.shulker.open     # Default: entity.chest.open
-        close_sound: entity.shulker.close   # Default: entity.chest.close
+        rows: 5                             # 默认值: 6
+        title: "<red>My Storage"            # 默认值: "Storage"
+        open_sound: entity.shulker.open     # 默认值: entity.chest.open
+        close_sound: entity.shulker.close   # 默认值: entity.chest.close
 ```
 
-### Falling Blocks
+### 掉落方块
 
-This is a sub-mechanic that mimics sand & gravel for your custom block. Placing it next to another block, with no block beneath, will make it fall
+这是一个模拟沙子和沙砾的子功能。放置时如果下面没有方块，它会掉落。
 
 ```yaml
 my_block:
   Mechanics:
     custom_block:
       type: NOTEBLOCK
-      is_falling: true # Default to false if unspecified
+      is_falling: true # 默认值为 false
 ```

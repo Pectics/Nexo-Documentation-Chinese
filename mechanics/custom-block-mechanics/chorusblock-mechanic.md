@@ -2,21 +2,22 @@
 icon: window-frame
 ---
 
-# ChorusBlock Mechanic
+# 紫颂方块机制 (ChorusBlock Mechanic)
 
 {% hint style="info" %}
-CHORUSBLOCK-type allows for up-to **63** custom blocks.\
-One per `custom_variation`
+CHORUSBLOCK 类型最多允许 **63** 种自定义方块。
+每个方块对应一个 `custom_variation`
 {% endhint %}
 
-### Creating your first block
+### 创建你的第一个方块
 
-#### Parent-Model
+#### 父模型 (Parent-Model)
 
-The Nexo-item root configuration is the same as for any item (you can use any material like a diamond for example) and set an itemname, etc.\
-It is recommended to not use a block for your material, sticking to such materials as PAPER\
-For the pack section you can use your own model or texture for your block.\
-If all you have is a texture, you can specify a parent\_model and Nexo will generate the needed files for you. A Normal 1x1x1 block uses "block/cube\_all"
+Nexo 物品的根配置与普通物品相同（例如你可以用钻石等任意材料），并设置一个 itemname 等。
+建议不要直接使用方块作为 material，而是使用像 PAPER 这样的材料。
+在 Pack 部分，你可以为方块指定自定义模型或纹理。
+如果你只有纹理，可以指定一个 `parent_model`，Nexo 会自动为你生成所需文件。
+一个标准的 1x1x1 方块通常使用 `"block/cube_all"`。
 
 ```yaml
 my_block:
@@ -27,11 +28,11 @@ my_block:
     texture: my_block_texture.png
 ```
 
-### CustomBlock Mechanic configuration
+### 自定义方块机制配置
 
-To use this mechanic you need to tell to Nexo which model to use (to use the generated one, just put the name id of your item).\
-You then need to use custom\_variation which is not already used by another block.\
-Valid custom\_variation is 1..63
+要使用此机制，你需要告诉 Nexo 使用哪个模型（如果使用自动生成的模型，只需写上物品的名称 ID）。
+接着需要指定一个未被其他方块占用的 `custom_variation` 值。
+合法的 `custom_variation` 范围是 1..63。
 
 ```yaml
 my_block:

@@ -1,9 +1,9 @@
-# 🎯 Hitbox
+# 🎯 碰撞箱
 
-Furnitures come with two core types, with and without collision-interactions.\
-Collision hitboxes are normal barrier-blocks, whilst non-solid ones are interaction-entities.\
-Interaction-entities have no collision, but can be any width and height, unlike barriers which are normal 1x1x1 blocks. Below are examples of how to use both.\
-\
-There are also two other types of hitboxes with collision but some other extra functionalities, Shulker- & Ghast-type hitboxes. Ghast Hitboxes are only available for 1.21.6+
+家具有两种核心类型：带有碰撞交互的和不带碰撞交互的。
+碰撞型的碰撞箱是普通的屏障方块，而非实体的则是交互实体。
+交互实体没有碰撞，但可以是任意宽度和高度，不像屏障那样只能是 1x1x1 方块。下面展示了如何使用这两种方式。
 
-<figure><img src="../../../.gitbook/assets/2025-06-20_16-51.png" alt=""><figcaption><p>Showing off Barrier, Interaction, Shulker &#x26; Ghast Hitboxes</p></figcaption></figure>
+此外，还有另外两种带碰撞但具有额外功能的碰撞箱类型：潜影贝型和恶魂型。恶魂碰撞箱仅在 1.21.6+ 版本中可用。
+
+<figure><img src="../../../.gitbook/assets/2025-06-20_16-51.png" alt=""><figcaption><p>展示了屏障、交互、潜影贝和恶魂的碰撞箱</p></figcaption></figure>

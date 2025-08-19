@@ -4,30 +4,30 @@ cover: >-
 coverY: 0
 ---
 
-# Directional Mechanic
+# 方向性机制 (Directional Mechanic)
 
-### What is this?
+### 这是什么？
 
-This mechanic allows you to place blocks and have them change their texture depending on the direction in which they are placed, like for example logs.\
-There are 3 types of directional blocks: `LOG`, `FURNACE` and `DROPPER`.\
-`LOG` takes up 3 custom block variations, `FURNACE` takes 4 and `DROPPER` takes 6.
+该机制允许方块在放置时根据朝向改变其纹理，就像原版的木头一样。
+共有 3 种方向性方块：`LOG`、`FURNACE` 和 `DROPPER`。
+`LOG` 占用 3 个自定义方块变体，`FURNACE` 占用 4 个，`DROPPER` 占用 6 个。
 
 {% hint style="info" %}
-Every sub-block can have a `model` property, which Nexo will use to determine what to display.\
-If there is no `model` property on the sub-block, Nexo will use the model from the parent-block.
+每个子方块都可以拥有一个 `model` 属性，Nexo 会根据该属性决定显示的内容。
+如果子方块没有 `model` 属性，Nexo 会使用父方块的模型。
 {% endhint %}
 
 {% hint style="info" %}
-Models are also automatically rotated depending on the direction in which the block is placed.\
-This means you can use the same model, and it will be rotated accordingly.\
-If the sub-block has a model defined, it will not be rotated, allowing you to use different models for different directions.
+模型会根据放置方向自动旋转。
+这意味着你可以重复使用同一个模型，它会根据方向自动旋转。
+如果子方块定义了模型，它将不会旋转，从而允许你为不同方向使用不同模型。
 {% endhint %}
 
 {% embed url="https://user-images.githubusercontent.com/62521371/167680557-750dac77-b4c4-4804-9513-184d776a012d.mp4" %}
 
-### Configuration
+### 配置
 
-### Parent-Block example:
+### 父方块示例:
 
 ```yaml
 main_block:
@@ -38,23 +38,23 @@ main_block:
   Mechanics:
     custom_block:
       type: NOTEBLOCK
-      # The model to show when placed, if unspecified the model
-      # specified in Pack or the one Nexo is generating
+      # 放置时显示的模型，如果未指定，则使用 Pack 中的模型
+      # 或者 Nexo 自动生成的模型
       #model: main_block
       custom_variation: 1
       directional:
-        # Valid values are LOG, FURNACE and DROPPER
+        # 合法的取值有 LOG、FURNACE 和 DROPPER
         directional_type: LOG
         # LOG
         y_block: main_block_y
         x_block: main_block_x
         z_block: main_block_z
-        # FURNACE and DROPPER
+        # FURNACE 和 DROPPER
         north_block: main_block_north
         east_block: main_block_east
         south_block: main_block_south
         west_block: main_block_west
-        # DROPPER needs these aswell
+        # DROPPER 还需要这些
         up_block: main_block_up
         down_block: main_block_down
       hardness: 1
@@ -65,151 +65,151 @@ main_block:
         silktouch: false
 ```
 
-#### LOG-type example:
+#### LOG 类型示例:
 
 ```yaml
-#This doesn't include the parent block from the above example
+# 这里不包含上面父方块的配置
 main_block_y:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 1
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
       
 main_block_x:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 2
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_z:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 3
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 ```
 
-#### FURNACE-type example:
+#### FURNACE 类型示例:
 
 ```yaml
-#This doesn't include the parent block from the above example
+# 这里不包含上面父方块的配置
 main_block_north:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 1
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
       
 main_block_south:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 2
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_west:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 3
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_east:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 4
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 ```
 
-#### DROPPER-type example:
+#### DROPPER 类型示例:
 
 ```yaml
-#This doesn't include the parent block from the above example
+# 这里不包含上面父方块的配置
 main_block_north:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 1
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
       
 main_block_south:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 2
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_west:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 3
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_east:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
       custom_variation: 4
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_up:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
-      # Another model set to show when block is up or down
+      # 当方块朝上或朝下时显示的另一个模型
       #model: mainblockmodel_vertical
       custom_variation: 5
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 
 main_block_down:
-  excludeFromInventory: true # Makes inventory only contain base-block
+  excludeFromInventory: true # 让物品栏中只包含基础方块
   material: PAPER
   Mechanics:
     custom_block:
       type: NOTEBLOCK
-      # Another model set to show when block is up or down
+      # 当方块朝上或朝下时显示的另一个模型
       #model: mainblockmodel_verticall
       custom_variation: 6
       directional:
-        parent_block: main_block #base block which will give drop
+        parent_block: main_block # 基础方块，用于掉落物定义
 ```

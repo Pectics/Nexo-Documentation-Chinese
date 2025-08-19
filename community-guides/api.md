@@ -6,7 +6,7 @@ coverY: 0
 
 # API
 
-### Repository & Dependencies
+### 仓库与依赖
 
 ```kotlin
 repositories {
@@ -20,12 +20,13 @@ dependencies {
 
 ## JavaDocs
 
-Nexo has JavaDocs published at [https://jd.nexomc.com](https://jd.nexomc.com/). These will be updated whenever changes to the API are made, which is not too often.
+Nexo 的 JavaDocs 发布在 [https://jd.nexomc.com](https://jd.nexomc.com/)。
+这些文档会在 API 发生变更时更新，但更新频率不算高。
 
-## Custom Items
+## 自定义物品
 
-Nexo has its own ItemBuilder class which handles building its custom items.\
-The [NexoItems](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoItems.html)-class contains most of the methods you would need to handle items.
+Nexo 提供了自己的 `ItemBuilder` 类来处理自定义物品的构建。
+[NexoItems](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoItems.html) 类包含了处理物品所需的大部分方法。
 
 ```java
 ItemBuilder itemBuilder = NexoItems.itemFromId(itemID);
@@ -34,42 +35,44 @@ String itemId = NexoItems.idFromItem(itemStack);
 ```
 
 {% hint style="info" %}
-Nexo loads items in an async task, thus getting them in your plugins onEnable will likely fail\
-You can listen for the NexoItemsLoadedEvent to be sure the items are registered
+Nexo 会在异步任务中加载物品，因此在插件的 `onEnable` 中获取它们可能会失败。
+你可以监听 **NexoItemsLoadedEvent** 来确保物品已经完成注册。
 {% endhint %}
 
-## Custom Blocks
+## 自定义方块
 
-The [NexoBlocks](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoBlocks.html)-class contains all the methods available for placing, removing and checking for custom blocks in Nexo.
+[NexoBlocks](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoBlocks.html) 类包含了在 Nexo 中放置、移除和检查自定义方块的所有方法。
 
 ```java
 NexoBlocks.place(itemID, location)
 ```
 
-### Furniture
+### 家具
 
-The [NexoFurniture](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoFurniture.html)-class contains all the methods available for placing, removing and checking for furniture in Nexo. In addition to this you can return the [FurnitureMechanic](https://jd.nexomc.com/1.8/com/nexomc/nexo/mechanics/furniture/FurnitureMechanic.html) of the Furniture to get specific properties of it if needed.
+[NexoFurniture](https://jd.nexomc.com/1.8/com/nexomc/nexo/api/NexoFurniture.html) 类包含了在 Nexo 中放置、移除和检查家具的所有方法。
+此外，你还可以获取家具的 [FurnitureMechanic](https://jd.nexomc.com/1.8/com/nexomc/nexo/mechanics/furniture/FurnitureMechanic.html)，以便在需要时获取它的具体属性。
 
 ```java
 NexoFurniture.place(itemID, location, @Nullable player)
 ```
 
-## Custom Mechanics
+## 自定义机制
 
-Nexo allows you to add your own mechanics to the plugin, new ones or extending existing ones\
-An example repository can be found [here](https://github.com/Nexo-MC/NexoExampleMechanic), with examples for both Java and Kotlin\
-You can register your mechanic in your onEnable or wherever you want.\
-This will register it when Nexo registers its own Mechanics, and parse them for items\
-\
-Mechanics consist of a Mechanic class with properties and methods.\
-MechanicFactory consists of parsing method for global Mechanic properties & linking item -> mechanic\
-\
-**NexoMechanicsRegisteredEvent** - Called when Nexo loads/reloads Mechanics\
-**NexoItemsLoadedEvent** - Called when Nexo finishes loading/reloading NexoItems
+Nexo 允许你为插件添加自己的机制，可以是新的机制，也可以是扩展已有的机制。
+示例仓库可在 [这里](https://github.com/Nexo-MC/NexoExampleMechanic) 查看，其中包含 Java 与 Kotlin 的示例。
+你可以在 `onEnable` 或任意需要的地方注册机制。
+这会在 Nexo 注册其自身机制时一并注册，并为物品解析。
 
-## Custom PackServer
+机制由一个带有属性和方法的 Mechanic 类组成。
+MechanicFactory 则包含了解析全局 Mechanic 属性的方法，以及物品与机制的绑定。
 
-If you want a PackServer type that Nexo does not provide, you can make an addon that registers one. Make a class that extends `NexoPackServer` and override the methods you need.
+* **NexoMechanicsRegisteredEvent** —— 当 Nexo 加载/重载机制时调用
+* **NexoItemsLoadedEvent** —— 当 Nexo 完成加载/重载物品时调用
+
+## 自定义 PackServer
+
+如果你需要的 PackServer 类型 Nexo 没有提供，可以通过编写拓展来注册一个。
+只需创建一个继承 `NexoPackServer` 的类，并重写你需要的方法。
 
 {% tabs %}
 {% tab title="Kotlin" %}
@@ -111,4 +114,5 @@ public class PackServer extends NexoPackServer {
 {% endtab %}
 {% endtabs %}
 
-To register this with Nexo, you simply call `PackServerRegistry.register(type, packServer)`&#x20;
+要将其注册到 Nexo，只需调用：
+`PackServerRegistry.register(type, packServer)`

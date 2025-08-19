@@ -4,13 +4,13 @@ cover: >-
 coverY: 0
 ---
 
-# Stripped Log Mechanic
+# 去皮木头机制 (Stripped Log Mechanic)
 
-## What is this?
+## 这是什么？
 
-This mechanic allows you to strip custom logs in to stripped version, like in vanilla.
+该机制允许你像原版一样，将自定义原木剥皮变成去皮版本。
 
-### Configuration
+### 配置示例
 
 ```yaml
 my_block:
@@ -19,8 +19,8 @@ my_block:
       type: NOTEBLOCK
       custom_variation: 2
       log_strip:
-        stripped_log: stripped_log #block that will change in to
-        drop: bark #additonal drop after right click mechanic
+        stripped_log: stripped_log # 剥皮后变成的方块
+        drop: bark # 右键剥皮操作后的额外掉落物
 ```
 
 {% embed url="https://youtu.be/ohiGtlz_who" %}

@@ -1,20 +1,24 @@
 ---
-description: How to add emojis to the game?
+description: 如何在游戏中添加表情符号？
 ---
 
-# Emoji
+# 表情符号 (Emoji)
 
-## What is an glyph?
+## 什么是字形 (Glyph)？
 
-A glyph is a textured unicode symbol. It can be used in any texts \(chat, item name, lore and more\). They can be used to do very, very powerful things \(custom inventories, extra bars\) but their simplest use is to be emoji.
+字形是带有纹理的 Unicode 符号。它可以用于任何文本（聊天、物品名称、描述等）。\
+它们可以实现非常强大的功能（例如自定义界面、额外状态条），但最简单的用途就是作为表情符号。
 
-## How to add a Glyph?
+## 如何添加一个字形？
 
-You first need to create a png texture. For example the heart.png file contained in `default/chat`.
+首先你需要创建一个 PNG 贴图。例如 `default/chat` 文件夹中的 `heart.png`。
 
 ![heart.png](../.gitbook/assets/heart%20%281%29.png)
 
-You can then add your section to the list of glyphs in `font.yml`. The code must be different for every glyph. This is the number that corresponds to the number of the unicode character that will be used. The texture is the path and name of the texture file. Height allows you to set the displayed character scale while ascent defines the vertical shift of the displayed result.
+然后在 `font.yml` 中添加你的字形配置。每个字形必须使用不同的 `code`。\
+`code` 对应要使用的 Unicode 字符编号。\
+`texture` 是贴图文件的路径和名称。\
+`height` 决定显示字符的缩放，`ascent` 决定显示结果的垂直偏移。
 
 ```yaml
 heart:
@@ -24,9 +28,9 @@ heart:
   height: 8
 ```
 
-## How to use it in the chat?
+## 如何在聊天中使用？
 
-You need to add a chat subsection to your glyph section:
+你需要在字形配置中添加一个聊天子配置：
 
 ```yaml
 chat:
@@ -35,15 +39,14 @@ chat:
   permission: "nexo.emoji.heart"
 ```
 
-The placeholders can be used in chat by players with the required permission \(if permission is specified, it is not mandatory\).
+玩家可以在聊天中使用这些占位符，前提是他们拥有所需的权限（如果配置了权限，权限并不是必需的）。
 
-## How to use it in item name or lore?
+## 如何在物品名称或描述中使用？
 
-Any glyph can be used in name and lore of your item configurations.
+任何字形都可以在物品配置的名称或描述中使用：
 
 ```text
 <glyph:heart>
 ```
 
-Where heart is replaced by your glyph section name.
-
+其中 `heart` 替换为你的字形配置名称。

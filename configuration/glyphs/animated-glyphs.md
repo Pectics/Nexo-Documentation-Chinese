@@ -1,33 +1,33 @@
-# 🎞️ Animated Glyphs
+# 🎞️ 动态字形
 
 {% hint style="info" %}
-This is an upcoming feature for Nexo 1.8
+这是 Nexo 1.8 的即将推出功能
 {% endhint %}
 
-With Nexo you can make Animated Glyphs, or GIFs, which you can use to animate GUIs or gif-emotes.\
-It is very simple, Nexo does most of the hard work to convert the GIF-file to a compatible format.
+通过 Nexo 你可以制作动态字形，或称为 GIF，它们可以用来为 GUI 或表情添加动画效果。
+操作非常简单，Nexo 会自动完成将 GIF 文件转换为兼容格式的大部分工作。
 
-Simply put your GIF-file in the resourcepack. As an example we will use `Nexo/pack/assets/nexo/textures/gifs/necoflap.gif`
+只需将 GIF 文件放入资源包中。例如我们使用 `Nexo/pack/assets/nexo/textures/gifs/necoflap.gif`
 
-### Gif-Glyph Config
+### GIF-字形配置
 
 ```yaml
 necoflap:
   gif: nexo:gifs/necoflap.gif
   ascent: 9
   height: 11
-  #frame_count: X      Optional, mainly used for limiting larger GIFs
-  #offset: X            Mainly if the GIF is not overlapping frames perfectly
+  #frame_count: X      可选，主要用于限制较大的 GIF
+  #offset: X           主要用于当 GIF 帧没有完美对齐时
 ```
 
-Unlike normal Glyphs, font cannot be customized, as Nexo sets it for you.\
-Texture-property is based on the `gif`-property and can be customized that way
+与普通字形不同，字体无法自定义，因为 Nexo 会自动为你设置。
+纹理属性基于 `gif` 属性，你可以通过它来自定义。
 
 {% hint style="warning" %}
-GIFs rely on Core Shaders and might break on version updates.\
-Large GIFs might also cause lag if the frame-count is really high, consider optimizing GIFs you intend to use
+GIF 依赖于核心着色器，并可能在版本更新时失效。
+如果 GIF 的帧数过高，大型 GIF 也可能导致卡顿，请考虑优化你打算使用的 GIF。
 {% endhint %}
 
 {% embed url="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FTAoAxayP9PrBtX9UQ5wa%2Fuploads%2FnciiMhz3TRl476nq82Kp%2F2025-05-26%2015-31-12.mp4?alt=media&token=c563fad9-3620-4285-b3f5-753a9b410d19" %}
-Example of GIFs in Chat & on Text Displays
+聊天和文本展示中使用 GIF 的示例
 {% endembed %}
