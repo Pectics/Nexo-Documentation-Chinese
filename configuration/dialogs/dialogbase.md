@@ -17,35 +17,35 @@ layout:
 
 # DialogBase
 
-Dialogs have a base which contains the content of the Dialog.\
-Below are the propeties you can use
+对话框 (Dialog) 有一个基础部分，其中包含了对话框的内容。
+下面是你可以使用的属性
 
-**title -** The title of the Dialog, is always visible on the screen\
-**externalTitle** - Name used for buttons that link to this Dialog, defaults to title\
-**canCloseWithEscape** - If the Dialog can be dismissed with Escape Key\
-**afterAction** - Operation performed on the dialog after click or submit actions. \
-&#x20; \* **NONE -** Keeps the current dialog screen open\
-&#x20; \* **CLOSE (Default) -** Close and return to the previous non-dialog screen (if any)\
-&#x20; \* **WAIT\_FOR\_RESPONSE -** Replaces the current screen with a "Waiting for Response"\
-**bodies** - List of DialogBodies to add to the Dialog Screen\
-**inputs** - List of DialogInputs to add to the Dialog Screen
+**title -** 对话框的标题，总是显示在屏幕上
+**externalTitle -** 用于链接到该对话框的按钮名称，默认值为 title
+**canCloseWithEscape -** 是否可以通过 Escape 键关闭对话框
+**afterAction -** 在点击或提交动作后对对话框执行的操作。&#x20;
+\* **NONE -** 保持当前对话框界面打开
+\* **CLOSE (默认) -** 关闭并返回到之前的非对话框界面（如果有）
+\* **WAIT\_FOR\_RESPONSE -** 将当前界面替换为“等待响应”界面
+**bodies -** 添加到对话框界面的 DialogBodies 列表
+**inputs -** 添加到对话框界面的 DialogInputs 列表
 
 ### [DialogBody](https://minecraft.wiki/w/Dialog#Body_format)
 
-A DialogBody describes content that is positioned between the title and the inputs of the Dialog Screen.\
-These are fairly simple and come in two types, MESSAGE & ITEM
+DialogBody 用于描述显示在标题与输入区域之间的内容。
+它们相对简单，分为两类：MESSAGE 与 ITEM
 
-**Message-Type** takes a width-property and a string for the message\
-This message supports MiniMessage and Nexo Glyphs- & Shift-tags
+**Message 类型** 需要一个宽度属性和一条消息字符串
+该消息支持 MiniMessage 与 Nexo Glyphs 及 Shift 标签
 
-**Item-Type** has a few more properties.\
-**description -** Takes a MiniMessage String and optionally a width (defaults to 200)\
-**showDecorations -** When true, shows the count & durability-bar on the item\
-**showTooltip -** When true, shows the tooltip when hovering over the item\
-**width -** Horizontal size of the element, must be between 1 & 256, defaults to 16\
-**height -** Vertical size of the element, must be between 1 & 256, defaults to 16
+**Item 类型** 有更多属性：
+**description -** 使用 MiniMessage 字符串，可选宽度（默认 200）
+**showDecorations -** 若为 true，会显示物品的数量和耐久条
+**showTooltip -** 若为 true，当鼠标悬停时显示物品提示
+**width -** 元素的水平大小，范围 1 到 256，默认 16
+**height -** 元素的垂直大小，范围 1 到 256，默认 16
 
-To make a DialogBody you can follow the below example, specifying a key/id for the Body-element and its properties;
+要创建一个 DialogBody，可以按照以下示例，指定 Body 元素的 key/id 及其属性：
 
 ```yaml
 base:
@@ -68,18 +68,18 @@ base:
 
 ### [DialogInput](https://minecraft.wiki/w/Dialog#Input_control_format)
 
-DialogInputs are rendered below the DialogBody-elements and have numerous actions for receiving information from players.
+DialogInput 会渲染在 DialogBody 元素下方，并拥有多种方式来接收玩家输入的信息。
 
-There are four types of Inputs, [TEXT](https://minecraft.wiki/w/Dialog#text), [BOOL](https://minecraft.wiki/w/Dialog#boolean), [NUMBER](https://minecraft.wiki/w/Dialog#number_range) & [SINGLE](https://minecraft.wiki/w/Dialog#single_option).
+共有四种输入类型：[TEXT](https://minecraft.wiki/w/Dialog#text)、[BOOL](https://minecraft.wiki/w/Dialog#boolean)、[NUMBER](https://minecraft.wiki/w/Dialog#number_range) 与 [SINGLE](https://minecraft.wiki/w/Dialog#single_option)。
 
-#### Text-Input
+#### 文本输入 (Text-Input)
 
-A simple text-input field with a few properties\
-**width -** The width of the text input field, between 1 & 1024, defaults to 200\
-**labelVisible -** Controls if the label is visible for the input-field\
-**maxLength** - The max length of the text input\
-**initial** - The initial value in the input-field when the Dialog is opened\
-**multiLineOptions -** Optional, specifies that the field should be multiline
+一个简单的文本输入框，具有以下属性：
+**width -** 文本输入框的宽度，范围 1 到 1024，默认 200
+**labelVisible -** 控制输入框标签是否可见
+**maxLength -** 文本输入的最大长度
+**initial -** 打开对话框时输入框的初始值
+**multiLineOptions -** 可选，指定该字段是否为多行
 
 ```yaml
 inputs:
@@ -95,13 +95,13 @@ inputs:
       height: 32
 ```
 
-#### Boolean-Input
+#### 布尔输入 (Boolean-Input)
 
-A checkbox returning a string value depending on its state
+一个复选框，会根据其状态返回一个字符串值
 
-**onTrue -** The string value to return when checked, default is "true"\
-**onFalse -** The string value to return when unchecked, defaults to "false"\
-**initial -** The initial state of the checkbox
+**onTrue -** 当选中时返回的字符串值，默认 "true"
+**onFalse -** 当未选中时返回的字符串值，默认 "false"
+**initial -** 复选框的初始状态
 
 ```yaml
 inputs:
@@ -113,16 +113,16 @@ inputs:
     onFalse: "false"
 ```
 
-#### NumberRange-Input
+#### 数值范围输入 (NumberRange-Input)
 
-A number slider used for returning a number-value
+一个数字滑块，用于返回数值
 
-**width -** The width of the slider, between 1 & 1024, defaults to 200\
-**labelFormat -** A translation key used for building the label\
-**start -** The lowest value of the slider\
-**end -** The highest value of the slider\
-**step -** The incremental value for each notch on the slider, if unspecified, slider has no notches\
-**initial -** The initial value between start & end for the slider when Dialog is shown
+**width -** 滑块的宽度，范围 1 到 1024，默认 200
+**labelFormat -** 用于构建标签的翻译键
+**start -** 滑块的最小值
+**end -** 滑块的最大值
+**step -** 每个刻度的增量值，如果未指定，滑块没有刻度
+**initial -** 打开对话框时滑块的初始值（介于 start 与 end 之间）
 
 ```yaml
 inputs:
@@ -137,11 +137,11 @@ inputs:
     step: 0.1
 ```
 
-#### SingleOption-Input
+#### 单选输入 (SingleOption-Input)
 
-**labelVisible -** If the label should be visible on the button or not\
-**width -** The width of the button\
-**options -** A list of SingleOptions the button can have. Contains a **display** text field & an **initial-field**
+**labelVisible -** 是否在按钮上显示标签
+**width -** 按钮的宽度
+**options -** 按钮可用的选项列表，包含一个 **display** 文本字段与一个 **initial** 字段
 
 ```yaml
 inputs:

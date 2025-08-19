@@ -4,16 +4,16 @@ cover: >-
 coverY: 0
 ---
 
-# 🧑‍🌾 Farming Mechanic
+# 🧑‍🌾 农业机制
 
-### How does it work?
+### 它是如何运作的？
 
-Nexo has a system for planting plants with various stages of growth, an example of how to configure it.
+Nexo 拥有一个植物生长系统，可以定义不同的生长阶段，以下是配置示例。
 
-**delay** the time in ticks that it takes to grow\
-**probability** to grow when the delay is passed\
-**light\_boost** when it has light nearby it grows faster\
-**next\_stage** you specify the next stage, it has to be an already created Nexo item.
+**delay** 生长所需的时间（以刻为单位）
+**probability** 当经过 delay 后生长的概率
+**light\_boost** 当附近有光照时，生长速度加快
+**next\_stage** 指定下一个阶段，它必须是一个已经创建的 Nexo 物品。
 
 ```yaml
 rose_plant:
@@ -39,7 +39,7 @@ rose_seed:
     model: custom/plants/rose_stage_1
 ```
 
-### First stage
+### 第一阶段
 
 ```yaml
 rose_plant_stage1:
@@ -57,7 +57,7 @@ rose_plant_stage1:
     model: custom/plants/rose_stage_1
 ```
 
-### Second stage
+### 第二阶段
 
 ```yaml
 rose_plant_stage2:
@@ -75,7 +75,7 @@ rose_plant_stage2:
     model: custom/plants/rose_stage_2
 ```
 
-### Third stage
+### 第三阶段
 
 ```yaml
 rose_plant_stage3:
@@ -95,6 +95,7 @@ rose_plant_stage3:
     model: custom/plants/rose_stage_3
 ```
 
-The plants can have the stages you decide, and the stages have to be a model created by you and not by the plugin for it to work. Now let's explain each mechanic **farmland\_required** It is to be placed only in fertile soil.
+植物可以拥有任意数量的阶段，但这些阶段必须是你自己创建的模型，而不是插件自动生成的模型，否则无法生效。
+最后补充说明一个机制：**farmland\_required** —— 它要求植物只能种植在肥沃土壤上。
 
 ***

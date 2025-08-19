@@ -15,16 +15,16 @@ layout:
     visible: true
 ---
 
-# 🗨️ Dialogs
+# 🗨️ 对话框 (Dialogs)
 
-Nexo simplifies the process of adding new Dialogs to your server.\
-Instead of needing to make a datapack, you can do it all in a YAML file inside `plugins/Nexo/dialogs` .
+Nexo 简化了在服务器中添加新对话框的过程。
+不需要额外制作数据包，你只需在 `plugins/Nexo/dialogs` 文件夹中编写一个 YAML 文件即可。
 
-Dialogs are made up of a few different parts.\
-A [DialogType](dialogtype.md) - Specifies properties at the root of the Dialog\
-A [DialogBase](dialogbase.md) - The content of the Dialog
+对话框由几个部分组成：
+一个 [DialogType](dialogtype.md) —— 定义对话框的根属性
+一个 [DialogBase](dialogbase.md) —— 定义对话框的内容
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>Example of Dialog using all available methods</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>使用所有可用方法的对话框示例</p></figcaption></figure>
 
 ```yaml
 type: NOTICE

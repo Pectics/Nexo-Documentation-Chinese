@@ -1,60 +1,60 @@
-# 📜 Main Changelog
+# 📜 主更新日志
 
-### **\[General]**
+### **\[通用]**
 
-* Change CustomSound handling
-  * `sound.yml` -> `sounds.yml`
-  * Allow for all optional-properties specified on the [wiki](https://minecraft.wiki/w/Sounds.json#File_structure)
-  * Refactor to allow for custom namespaces
-* Multi-font Glyphs
+* 修改自定义音效的处理方式  
+  * `sound.yml` -> `sounds.yml`  
+  * 支持在 [wiki](https://minecraft.wiki/w/Sounds.json#File_structure) 中指定的所有可选属性  
+  * 重构以支持自定义命名空间  
+* 多字体字形支持  
 
-### **\[ResourcePack]**
+### **\[资源包]**
 
-* Entirely new pack-structure to improve importing external packs
-  * A detailed explanation can be found here
-* ResourcePack is now sent before player loads in the server (Configuration Phase)
-* Automatic ModelEngine-pack Import
-* New PackServer options
-  * POLYMATH - same as in 1.x
-  * SELFHOST - SelfHost/Localhost the pack on your server itself
-* Improve pack-merging and conflict handling
-* Future Default Assets are now included in a external pack instead of in the Jar itself
-* Built-in Pack-Obfuscator
+* 全新的资源包结构，用于改进外部资源包的导入  
+  * 详细说明请查看这里  
+* 资源包将在玩家进入服务器前（配置阶段）发送  
+* 自动导入 ModelEngine 资源包  
+* 新的 PackServer 选项  
+  * POLYMATH —— 与 1.x 中相同  
+  * SELFHOST —— 在服务器本地自托管资源包  
+* 改进资源包合并和冲突处理  
+* 默认未来资产现在包含在外部资源包中，而不是直接放在 Jar 文件内  
+* 内置资源包混淆器  
 
-### **\[Furniture]**
+### **\[家具]**
 
-* Packet-based Furniture & Furniture Hitboxes
-  * Aims to fix tons of issues with existing furniture leaving behind hitboxes & not updating properly
-* Support for multiple interaction-hitboxes
-* Seat-mechanic is no longer bound to barrierHitbox
-  * Meaning you can define as many seats as you want at whatever position you want
-* Toggleable-light mechanic for lamps and other such furniture
-* Allow furniture placed on slabs, carpets and other non full blocks
+* 基于数据包的家具与家具碰撞箱  
+  * 旨在修复大量家具遗留碰撞箱和无法正确更新的问题  
+* 支持多个交互碰撞箱  
+* 座位机制不再绑定到屏障碰撞箱  
+  * 也就是说，你可以在任意位置定义任意数量的座位  
+* 可切换灯光机制，用于灯具和类似家具  
+* 支持家具放置在半砖、地毯等非完整方块上  
 
-### **\[Custom Blocks]**
+### **\[自定义方块]**
 
-* NoteBlock & StringBlock mechanics moved under new common `CustomBlock-Mechanic`
-* NoteBlock-mechanic custom\_variation limit 749 -> 1149
-* NoteBlock-mechanic can now be used in beacons
-* NoteBlock-mechanic can now be used without disabling vanilla noteblock functionality
-  * Disabled by default in mechanics.yml
-* Remade Custom-Block Breaking System
-  * Closer to vanilla logic with tool-speed modifiers
-  * Fixes bunch of minor bugs with breaking & sound from 1.X
-* StringBlocks can now be placed ontop of water similar to Lilypads with `placeable_on_water`
+* 音符盒和绊线机制移动到新的通用 `CustomBlock-Mechanic` 下  
+* 音符盒机制的自定义变体上限从 749 提升到 1149  
+* 音符盒机制现在可以用于信标  
+* 音符盒机制现在可在不禁用原版音符盒功能的情况下使用  
+  * 在 `mechanics.yml` 中默认禁用  
+* 重制自定义方块破坏系统  
+  * 更接近原版逻辑，支持工具速度修正  
+  * 修复了 1.X 中一系列与破坏和音效相关的小问题  
+* 绊线方块现在可以像睡莲一样放置在水面上，使用 `placeable_on_water`  
 
-### **\[Custom Armor]**
+### **\[自定义盔甲]**
 
-* SHADER CustomArmor is no longer supported as TRIMS work on all supported versions
-  * If you still for some reason want to use SHADER method, you can use it by manually handling ResourcePackFiles
-  * Follow the README here for [FancyPants](https://github.com/Ancientkingg/fancyPants) or the more optimized [LessFancyPants](https://github.com/Godlander/lessfancypants)
+* 不再支持 SHADER 自定义盔甲，因为 TRIMS 在所有支持的版本上都能使用  
+  * 如果你仍然想使用 SHADER 方法，可以手动处理资源包文件  
+  * 请参考 [FancyPants](https://github.com/Ancientkingg/fancyPants) 或更优化的 [LessFancyPants](https://github.com/Godlander/lessfancypants) 的 README  
 
-### **\[Removed]**
+### **\[移除]**
 
-* Dropped support for 1.20.3 & below
-* Block-Mechanic (Mushroom Blocks), BigMining-, Hat-, Aura-, Skinnable-, BottledExp-, Durability-, Efficiency-, Repair-, Consumable-, ConsumablePotionEffects-, Food-, MusicDisc-, BedrockBreak-, Watering- & Farmblock-Mechanic have been removed
-* BossShopPro compatibility
+* 放弃对 1.20.3 及以下版本的支持  
+* 移除了以下机制：方块机制（蘑菇方块）、大规模挖矿、帽子、光环、可换皮肤、瓶装经验、耐久度、效率、修复、消耗品、药水消耗品、食物、唱片、破坏基岩、浇水与农田方块机制  
+* 移除了 BossShopPro 兼容  
 
-### **\[Developer API]**
+### **\[开发者 API]**
 
-The API has naturally had tons of breaking changes and new additions. A detailed changelog can be found here
+API 自然发生了大量不兼容变更与新增内容。详细的更新日志请查看这里。  

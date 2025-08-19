@@ -4,87 +4,85 @@ cover: https://i.imgur.com/T76ianD.png
 coverY: 0
 ---
 
-# 🌀 Glyphs
+# 🌀 字形
 
-## What is a glyph?
+## 什么是字形？
 
-A glyph is a textured unicode symbol. It can be used in any place text is rendered ingame (chat, item name, lore and more). They can be used to do very, very powerful things (custom inventories, extra bars) but their simplest use is to be emoji.
+字形是一个带纹理的 Unicode 符号。它可以在游戏内任何渲染文字的地方使用（聊天、物品名称、描述等）。它们可以用来实现非常强大的功能（自定义背包、额外状态栏），但最简单的用途就是表情符号。
 
-## Configuring a Glyph
+## 配置一个字形
 
-You can then add your section to any YAML file from the glyphs directory.\
-A glyph has a few main properties, `texture`, `ascent`, `height` and `font`\
-The texture is the path and name of the texture file in the format of `namespace:path`\
-`height` is the scale of your glyph, height must also never be lower than ascent.\
-`ascent` is the vertical offset of your glyph, and must be equal or lower than height.\
-`font` is the font you want to use. If unspecified, it will use the Default Font in settings.yml at `Glyphs.default_font`\
-Unless you need the Glyph for the Escape Menu, as this place only supports the `minecraft:default` font, to use a custom font to limit conflicts & unintended uses\
-\
-You can also set a `permission` towards your Glyph to limit who can use it.\
-If unspecified, Nexo will use the default permission defined in settings.yml at `Glyphs.default_permission` . You can specify `<glyph_id>` or `<glyph_placeholder`> which Nexo will then replace for you
+你可以在 glyphs 目录下的任意 YAML 文件中添加自己的配置段。
+一个字形有几个主要属性：`texture`、`ascent`、`height` 和 `font`
+`texture` 是纹理文件的路径和名称，格式为 `namespace:path`
+`height` 是字形的高度比例，同时高度不能小于 ascent。
+`ascent` 是字形的垂直偏移，必须小于或等于高度。
+`font` 是你想要使用的字体。如果未指定，将会使用 settings.yml 中 `Glyphs.default_font` 的默认字体。
+除非你需要在游戏的 ESC 菜单中使用字形，因为此处只支持 `minecraft:default` 字体，所以为了避免冲突和意外使用，你需要指定自定义字体。
 
-Glyphs can also have `placeholders` which can be used to make more chat-friendly use-cases\
-This is defined as a list of strings and will let players use shorthands for a given Glyph
+你也可以为字形设置一个 `permission` 来限制谁能使用它。
+如果未指定，Nexo 会使用 settings.yml 中定义的默认权限 `Glyphs.default_permission`。你可以指定 `<glyph_id>` 或 `<glyph_placeholder>`，Nexo 会自动替换。
+
+字形还可以定义 `placeholders`，让玩家在聊天中更方便地使用快捷符号。
+这是一个字符串列表，可以让玩家通过简写来调用某个字形。
 
 ```yaml
 heart:
   texture: default/chat/heart
   ascent: 8
   height: 8
-  #font: namespace:fontname     Optional, unspecified uses font in settings.yml
-  #permission: nexo.glyph.heart Optional, unspecified uses permission in settings.yml
+  #font: namespace:fontname     可选，未指定则使用 settings.yml 中的字体
+  #permission: nexo.glyph.heart 可选，未指定则使用 settings.yml 中的权限
   #placeholders:
   #  - "<3"
 ```
 
 {% hint style="warning" %}
-If your texture is above 256x256 resolution you need to either downscale it or make a [multi-bitmap-glyph.md](multi-bitmap-glyph.md "mention")
+如果你的纹理超过 256x256 分辨率，你需要缩小它，或者制作一个 [multi-bitmap-glyph.md](multi-bitmap-glyph.md "mention")
 {% endhint %}
 
-### How to use the Glyph
+### 如何使用字形
 
-Nexo implements a custom MiniMessage tag for each glyph, which lets you use it more or less anywhere\
-You can use \<glyph:glyphid> and it will display your glyph, naturally replace glyphid with your Glyphs ID. Above this would be `heart`\
-This tag can then be used in tablists, scoreboards, titles, chat prefixes via LuckPerms or otherwise.\
-It is advised to use the Glyph-Tag over raw unicodes whenever possible\
+Nexo 为每个字形实现了一个自定义 MiniMessage 标签，你几乎可以在任意位置使用它。
+你可以使用 `<glyph:glyphid>` 来显示字形，把 glyphid 替换成你的字形 ID。上面的例子中就是 `heart`。
+这个标签可以在 Tab 列表、计分板、标题、聊天前缀（如 LuckPerms）中使用。
+建议尽量使用 Glyph 标签而不是原始 Unicode。
 
+字形标签还可以传递一些可选参数。
+对于 [multi-bitmap-glyph.md](multi-bitmap-glyph.md "mention")，你可以指定显示的索引。
+例如如果你制作了一个 2x2 的字形，可以使用 `<glyph:heart:2>` 或 `<glyph:heart:2..3>` 来只显示字形的部分内容。
 
-The Glyph-tag also have some optional arguments you can pass.\
-For [multi-bitmap-glyph.md](multi-bitmap-glyph.md "mention")'s you can specify the index to display.\
-For example if you make a 2x2 Glyph, you can do `<glyph:heart:2>` or `<glyph:heart:2..3>` to display only those parts of the Glyph.
+如果你希望字形可变色，可以使用 `<glyph:heart:colorable>` 或 `<glyph:heart:c>`&#x20;
+这样字形就会继承前面应用的颜色，而不会强制显示为白色或默认颜色。
 
-If you want your Glyph to be colorable, you can do `<glyph:heart:colorable>` or `<glyph:heart:c>` \
-This will make your Glyph accept any previous color that might apply, and not force it to white or normal
+从 1.21.4 开始，还新增了 "shadow-color" 标签，允许修改字形阴影的颜色和透明度。
+你可以通过 `shadow` 或 `s` 参数来使用，例如：`<glyph:heart:shadow:#AARRGGBB>`
 
-As of 1.21.4 there is also a new "shadow-color" tag, letting you change the color and alpha-value of the Glyphs-shadow\
-You can use this by using the argument shadow, or s, like this; `<glyph:heart:shadow:#AARRGGBB>`&#x20;
+所有这些参数都可以组合使用，你可以同时指定位图索引、设置可变色、修改阴影。
 
-All these arguments can be combined, letting you specify a specific Bitmap-Index, make it colorable and change the shadow
+### 自定义 GUI
 
-### Custom GUIs
-
-With Nexo-glyphs you can create custom textured GUI's\
-Nexo does not handle the GUI-Inventory itself, only the visual part of it.\
-Simply make a glyph like shown below:
+通过 Nexo 字形你可以创建自定义纹理 GUI。
+Nexo 并不处理 GUI 背包的逻辑部分，只负责视觉部分。
+只需像下面这样配置一个字形：
 
 ```yaml
 customshop:
   texture: required/ui/menu_items
-  #font: minecraft:my_font      # Optional, defaults to minecraft:default
+  #font: minecraft:my_font      # 可选，默认为 minecraft:default
   ascent: 37
   height: 256
 ```
 
-Then in the Inventory-Title you just put `<glyph:glyphid>` and Nexo will handle the rest.\
-This applies to the vast majority of places you would want to use a glyph. If the tag does not work you can use the [PlaceholderAPI Placeholder](./#placeholderapi)\
-\
-To adjust the horizontal position of your texture/glyph in the inventory, use the shift-tag.\
-For example; `<shift:-8>` for moving 8 pixels back, and `<shift:211>` for moving 211 pixels forward.
+然后在背包标题中输入 `<glyph:glyphid>`，Nexo 会处理剩下的部分。
+这适用于绝大多数使用字形的场景。如果标签不起作用，你可以使用 [PlaceholderAPI 占位符](./#placeholderapi)。
 
-### Emoji List
+要调整字形在背包中的水平位置，可以使用 shift 标签。
+例如：`<shift:-8>` 会向后移动 8 像素，`<shift:211>` 会向前移动 211 像素。
 
-To make a glyph appear under `/nexo emojis` you need to specify that it is one, like below.\
-If not specified, this will default to `false`
+### 表情符号列表
+
+要让某个字形出现在 `/nexo emojis` 下，你需要明确指定它是一个 emoji：
 
 ```yaml
 heart:
@@ -92,17 +90,18 @@ heart:
   is_emoji: true
 ```
 
-It will also, by default, only show emojis the player has the permission for.\
-In `settings.yml` you can toggle the `only_show_emojis_with_permission` setting.\
-This will show all emojis to every player, and adds a hover-message indicating if they have permission or not. ![img](https://cdn.discordapp.com/attachments/758785982005903431/1002564595099111474/unknown.png)
+默认情况下，只有玩家拥有权限时才会显示对应的表情。
+在 `settings.yml` 中你可以切换 `only_show_emojis_with_permission` 选项。
+启用后将会向所有玩家显示所有表情，并在悬停时提示他们是否有权限。![img](https://cdn.discordapp.com/attachments/758785982005903431/1002564595099111474/unknown.png)
 
-The placeholders can be used in chat by players with the required permission (if permission is specified, it is not mandatory).
+占位符可由拥有权限的玩家在聊天中使用（如果指定了权限，非必须）。
 
-## How to make glyphs tabcomplete?
+## 如何让字形支持 Tab 补全？
 
-Simply set `tabcomplete: true` in the chat-section. If not specified, this will default to `false`
+只需在聊天配置中设置 `tabcomplete: true`。如果未指定，默认值为 `false`。
 
-By default tabcompletion will use the raw unicode. This only works for glyphs using the Default-font (used if none is specified). If you want it to use the chat placeholders, you can do so by disabling `unicode_completions` in settings.yml.
+默认情况下，Tab 补全会使用原始 Unicode。这仅适用于使用默认字体（未指定字体时使用）的字形。
+如果你希望它使用聊天占位符，可以在 settings.yml 中禁用 `unicode_completions`。
 
 ```yaml
 myemoji:
@@ -115,9 +114,9 @@ myemoji:
 
 ## PlaceholderAPI
 
-### What's my glyph placeholder?
+### 我的字形占位符是什么？
 
-The section name is the glyph id. In this example the glyph id is `heart`, the placeholder is `%nexo_glyphid%`, so in this example: `%nexo_heart%`\
-Glyph-ID is the first line in any glyphs config, it is not the texturename or the placeholder. you can also do shifts using PAPI by doing `%nexo_shift_-8%` or `%nexo_shift_8%`&#x20;
+配置段名称就是字形 ID。在这个例子中，字形 ID 是 `heart`，对应的占位符是 `%nexo_glyphid%`，也就是 `%nexo_heart%`。
+Glyph-ID 是任意字形配置的第一行，不是纹理名或占位符。你还可以在 PAPI 中使用 shift，例如 `%nexo_shift_-8%` 或 `%nexo_shift_8%`。
 
-Do note if the font of a Glyph isnt `minecraft:default` this will just default to using a Glyph-Tag, not unicodes
+注意，如果字形的字体不是 `minecraft:default`，它将会默认使用字形标签，而不是 Unicode。

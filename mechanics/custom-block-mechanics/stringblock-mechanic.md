@@ -4,28 +4,28 @@ cover: >-
 coverY: 0
 ---
 
-# 🧵 StringBlock Mechanic
+# 🧵 绊线方块机制 (StringBlock Mechanic)
 
 {% hint style="info" %}
-STRINGBLOCK-type allows for up-to **127** custom blocks.\
-One per `custom_variation`
+STRINGBLOCK 类型最多允许 **127** 种自定义方块。
+每个方块对应一个 `custom_variation`
 
-Another quirk with this CustomBlock is that it has 2 different hitbox-states\
-All variations after 64 will have a smaller hitbox than those before.
+该自定义方块还有一个特殊点：它有两种不同的碰撞箱状态。
+在 `custom_variation` 超过 64 时，碰撞箱会比之前的小。
 {% endhint %}
 
-## How does it work?
+## 它是如何工作的？
 
-This is a type of CustomBlock best aimed at plants, rocks and other foliage.\
-It uses the vanilla TripWire block and therefore will disable all normal behaviour TripWires might have.
+这种自定义方块最适合用来制作植物、石块和其他装饰物。
+它基于原版绊线方块实现，因此会禁用绊线在原版中的所有行为。
 
-## How do I create a stringblock?
+## 如何创建一个绊线方块？
 
-### Nexo Resourcepack configuration
+### Nexo 资源包配置
 
-Below is an example of how to configure the model/texture to use.\
-`block/cross` is what normal vanilla plants use and allows for converting a 2d-texture into a block.\
-If you want an example, look at RoseBushes in-game.
+下面是一个配置模型/纹理的示例。
+`block/cross` 是原版植物常用的模型，它可以将一张二维纹理转化为一个方块。
+如果你需要参考，可以看看游戏中的玫瑰丛。
 
 ```yaml
 jasmine_flower:
@@ -33,16 +33,15 @@ jasmine_flower:
   material: PAPER
   Pack:
     parent_model: "block/cross"
-    texture: custom/flowers/jasmine_flower.png # .png extension is not mandatory
+    texture: custom/flowers/jasmine_flower.png # .png 扩展名不是必须的
 ```
 
-### StringBlock Mechanic Configuration
+### 绊线方块机制配置
 
-To use this mechanic you need to tell nexo which model to use (to use the generated one, just put the id name of your item).\
-Then you need to use custom\_variation that is not already used by another decoration.\
-You can also configure the hardness of the block, which specifies how long a block should take to break.\
-`drop.best_tool` allows you to specify which tool should be best.\
-An example would be PICKAXE for a small stone
+要使用此机制，你需要告诉 Nexo 使用哪个模型（如果使用自动生成的模型，只需写物品的名称 ID）。
+接着需要指定一个未被其他装饰占用的 `custom_variation` 值。
+你还可以设置方块的硬度，决定它需要多长时间才能被破坏。
+`drop.best_tool` 允许指定最佳工具，例如 PICKAXE 适合小石块。
 
 ```yaml
 jasmine_flower:
@@ -56,18 +55,17 @@ jasmine_flower:
         silktouch: false
 ```
 
-## Minor sub-mechanics
+## 次级机制
 
-Stringblocks also have some additional properties.\
-`placeable_on_water`allows you to place it on water like Lilypads\
-`is_tall` makes the customblock have a double hitbox, much like Tall Grass\
-`random_place` takes a list of strings representing other stringblock-mechanics.\
-This will then place a random one of these when the "parent" is placed
+绊线方块还有一些额外属性。
+`placeable_on_water` 允许它像睡莲一样放置在水面上。
+`is_tall` 让方块拥有双层碰撞箱，类似于高草丛。
+`random_place` 接收一个字符串列表，代表其他绊线机制，放置时会随机生成其中之一。
 
-### Tall Plants
+### 高植物
 
-Nexo has a `is_tall` - property which makes the STRINGBLOCK take up two spaces, similar to Tall Grass. This requires using a specific parent-model and two separate textures, for the top and bottom block. Nexo also provides a default parent-model for use with this.\
-Below is an example config using two different PNGs
+Nexo 提供了 `is_tall` 属性，让 STRINGBLOCK 占据两个方块空间，类似高草。这需要使用特定的父模型，以及上下两个独立纹理。Nexo 提供了默认的父模型可供使用。
+下面是一个使用两张不同 PNG 的示例：
 
 ```yaml
 plant:
@@ -82,7 +80,7 @@ plant:
       is_tall: true
 ```
 
-## Sapling
+## 树苗 (Sapling)
 
 ```yaml
 sapling:
@@ -90,15 +88,15 @@ sapling:
     custom_block:
       type: STRINGBLOCK
       sapling:
-        grows_naturally: true # if you want only the player can grow it
-        natural_growth_time: 6000 #in ticks
+        grows_naturally: true # 如果你希望只能由玩家种植，请改为 false
+        natural_growth_time: 6000 # 单位为 tick
         grows_from_bonemeal: true
         bonemeal_growth_speedup: 1250
         grow_sound: block.grass.break
         min_light_level: 4
-        requires_water_source: false #if you want it to need water
-        schematic: schemTest #structure that will put
-        # this also allows you to use a list of schematics:
+        requires_water_source: false # 如果你希望它必须在水边生长，请改为 true
+        schematic: schemTest # 将要生成的结构
+        # 这里也可以使用一个结构列表：
         # schematic:
         # - schem: palmTree1
         #   chance: 0.5
@@ -109,14 +107,14 @@ sapling:
         copy_entities: false
 ```
 
-You can also add some randomness to the growth, or just increase the delay between checks.\
-Go into `mechanics.yml` and under stringblock-mechanic, adjust `sapling_growth_check_delay`\
-This is in ticks, so 20 = 1 second.
+你还可以为生长添加一些随机性，或延长检测间隔。
+在 `mechanics.yml` 的 stringblock-mechanic 下调整 `sapling_growth_check_delay`。
+该值以 tick 为单位，20 = 1 秒。
 
 ## BlockLocker
 
-You can use this to allow protection via [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/)\
-Valid protectionTypes are CONTAINER, DOOR, ATTACHABLE
+你可以通过 [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/) 为其添加保护。
+合法的 `protection_type` 有 CONTAINER、DOOR、ATTACHABLE。
 
 ```yaml
 Mechanics:

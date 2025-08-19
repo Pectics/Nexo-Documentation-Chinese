@@ -4,9 +4,9 @@ cover: >-
 coverY: 0
 ---
 
-# 🪑 Furniture Mechanic
+# 🪑 家具机制
 
-## Furniture Mechanic
+## 家具机制
 
 ```yaml
 myitem:
@@ -19,29 +19,29 @@ myitem:
       block_sounds:
         place_sound: block.stone.place
         break_sound: block.stone.break
-        hit_sound: my.custom.hitsound     # Custom sound as defined in Nexo/sound.yml
-        step_sound: my.custom.stepsound   # Requires a sound-file in the Nexo/pack-folder aswell
+        hit_sound: my.custom.hitsound     # 在 Nexo/sounds.yml 中定义的自定义音效
+        step_sound: my.custom.stepsound   # 需要在 Nexo/pack 文件夹中提供对应音效文件
         fall_sound: my.custom.fallsound
       hitbox:
         barriers:
           - 0,0,0
       drop:
         silktouch: false
-        # If no loots section is defined, will drop itself
+        # 如果没有定义 loots 部分，则掉落自身
         #loots:
         #  - { nexo_item: table, probability: 1.0 }
 ```
 
-### Furniture-Properties
+### 家具属性
 
 #### Display Transform
 
-The `display_transform` dictates how the model will be displayed.\
-By default it is set to `NONE`, which will show it as it looks when you open the model in BlockBench.\
-As some other plugins might use ArmorStands and add the furniture to its head, you can set this option to `HEAD` for the same effect.\
-There is also: `FIRSTPERSON_LEFTHAND`, `FIRSTPERSON_RIGHTHAND`, `FIXED`, `GROUND`, `GUI`, `THIRDPERSON_LEFTHAND`, `THIRDPERSON_RIGHTHAND`.\
-All of these will be displayed ingame as shown in BlockBench's Display Tab under the specified type.\
-Look at [Furniture Position](https://github.com/Nexo-MC/Nexo-Documentation/blob/master2/mechanics/furniture-mechanic/broken-reference/README.md) for an example on FIXED (ItemFrame Position)
+`display_transform` 决定了模型的显示方式。
+默认设置为 `NONE`，这会让它的显示效果与在 BlockBench 中打开时一致。
+由于某些插件可能会使用盔甲架并将家具附加到头部，你也可以将此选项设置为 `HEAD` 来实现相同的效果。
+除此之外还有：`FIRSTPERSON_LEFTHAND`, `FIRSTPERSON_RIGHTHAND`, `FIXED`, `GROUND`, `GUI`, `THIRDPERSON_LEFTHAND`, `THIRDPERSON_RIGHTHAND`。
+这些都会在游戏中以 BlockBench 的 Display 标签中对应类型的方式显示。
+可以查看 [家具位置](https://github.com/Nexo-MC/Nexo-Documentation/blob/master2/mechanics/furniture-mechanic/broken-reference/README.md) 中 FIXED (物品展示框位置) 的示例。
 
 ```yaml
 myitem:
@@ -53,13 +53,13 @@ myitem:
 
 #### Tracking Rotation / Billboard
 
-The `tracking_rotation`-property defines whether you want the furniture to "track" the player.\
-This is mainly for stuff like billboard and leaderboards you want the player to see, not normal furniture.\
-Options are:\
-`FIXED` - No rotation\
-`VERTICAL` - Pivots around vertical axis\
-`HORIZONTAL` - Pivots around horizontal axis\
-`CENTER` - Pivots around center point
+`tracking_rotation` 属性定义了家具是否会“追踪”玩家。
+这主要用于广告牌、排行榜等需要玩家能看到的物体，而不是普通家具。
+可选值：
+`FIXED` - 固定不旋转
+`VERTICAL` - 围绕垂直轴旋转
+`HORIZONTAL` - 围绕水平轴旋转
+`CENTER` - 围绕中心点旋转
 
 ```yaml
 myitem:
@@ -71,8 +71,8 @@ myitem:
 
 #### Translation
 
-The \`translation\`-property lets you offset the model of your furniture. Can be useful to adjust visually without editing the model-json itself\
-Config should look like this:
+`translation` 属性允许你对家具模型进行偏移。可以在不修改模型 json 文件的情况下进行视觉调整。
+配置如下：
 
 ```yaml
 myitem:
@@ -84,8 +84,8 @@ myitem:
 
 #### Brightness
 
-The `brightness`-property lets you override the vanilla lighting-values of the furniture.\
-It has a `block_light` and `sky_light` property for the different types of lighting Minecraft has. Config should look like this:
+`brightness` 属性允许你覆盖家具的原版光照数值。
+它有 `block_light` 和 `sky_light` 两个子属性，对应 Minecraft 的两种光照类型。配置如下：
 
 ```yaml
 myitem:
@@ -99,8 +99,8 @@ myitem:
 
 #### Scale
 
-The `scale`-property is a way to scale the furniture.\
-It has a `x`, `y` and `z` property for scaling on each axis. Config should look like this:
+`scale` 属性可以用来缩放家具。
+它有 `x`、`y` 和 `z` 三个子属性，分别对应各轴缩放。配置如下：
 
 ```yaml
 myitem:
@@ -110,11 +110,11 @@ myitem:
         scale: 1,1,1
 ```
 
-`view_range`, `shadow_radius`, `shadow_strength` should be self-explanatory.
+`view_range`、`shadow_radius`、`shadow_strength` 顾名思义，无需多解释。
 
-### Custom Sounds
+### 自定义音效
 
-Furniture, like custom blocks, can have custom sounds
+家具和自定义方块一样，可以拥有自定义音效。
 
 ```yaml
 myitem:
@@ -123,15 +123,15 @@ myitem:
       block_sounds:
         place_sound: block.stone.place
         break_sound: block.stone.break
-        hit_sound: my.custom.hitsound     # Custom sound as defined in Nexo/sounds.yml
-        step_sound: my.custom.stepsound   # Requires a sound-file in the Nexo/pack-folder aswell
+        hit_sound: my.custom.hitsound     # 在 Nexo/sounds.yml 中定义的自定义音效
+        step_sound: my.custom.stepsound   # 需要在 Nexo/pack 文件夹中提供对应音效文件
         fall_sound: my.custom.fallsound
 ```
 
-All the volume and pitch values are set to be what Minecraft uses for blocks normally.\
-If you want to change the volume or pitch, you can do so by using the format below.\
-Keep in mind these two formats are compatible with eachother.\
-We recommend just use the default one, but the option is there if you want to change it.
+所有音量和音调默认与 Minecraft 方块一致。
+如果你想修改音量或音调，可以使用以下格式。
+请注意这两种格式是兼容的。
+推荐直接使用默认格式，但如果你需要修改，也可以使用扩展格式。
 
 ```yaml
 myitem:
@@ -143,14 +143,14 @@ myitem:
           volume: 1.0
           pitch: 0.2
         break_sound: block.stone.break
-        hit_sound: my.custom.hitsound     # Custom sound as defined in Nexo/sounds.yml
-        step_sound: my.custom.stepsound   # Requires a sound-file in the Nexo/pack-folder aswell
+        hit_sound: my.custom.hitsound     # 在 Nexo/sounds.yml 中定义的自定义音效
+        step_sound: my.custom.stepsound   # 需要在 Nexo/pack 文件夹中提供对应音效文件
         fall_sound: my.custom.fallsound
 ```
 
-### Rotatable
+### 可旋转家具
 
-To make a furniture rotatable, simply add the following to your item's config.
+要让家具可以旋转，只需在物品配置中添加：
 
 ```yaml
 myitem:
@@ -159,9 +159,9 @@ myitem:
       rotatable: true
 ```
 
-### ModelEngine Furniture
+### ModelEngine 家具
 
-To make use of a ModelEngine model as your furniture, simply add the following to your item's config:
+要让家具使用 ModelEngine 模型，只需在物品配置中添加：
 
 ```yaml
 myitem:
@@ -170,12 +170,12 @@ myitem:
       modelengine_id: name_of_your_bbmodel_file
 ```
 
-### Jukebox
+### 点唱机
 
-Lets this furniture accept music discs and custom music discs which will be played.\
-You can tweak the `volume` and `pitch` of the music from the jukebox.\
-There is also a `permission` field, which can be used if you only want certain players to be able to play music from the jukebox.\
-By default permission is blank, which means anyone can play music from the jukebox.
+让家具能播放音乐唱片和自定义唱片。
+你可以调整点唱机的 `volume` 和 `pitch`。
+还可以设置 `permission`，如果你只想让特定玩家能使用点唱机。
+默认权限为空，意味着任何人都能播放。
 
 ```yaml
 myitem:
@@ -187,25 +187,26 @@ myitem:
         permission: "nexo.jukebox.play"
 ```
 
-### Restrict Rotation
+### 限制旋转角度
 
-You can restrict the amount of rotation-facings a furniture has with `restricted_rotation`.\
-It can be set to STRICT or VERY\_STRICT, with 8 and 4 facings respectively.\\
+你可以通过 `restricted_rotation` 限制家具的旋转朝向数量。
+可设置为 STRICT 或 VERY\_STRICT，分别对应 8 个和 4 个朝向。
 
 ```yaml
 myitem:
   Mechanics:
     furniture:
-      restricted_rotation: VERY_STRICT #STRICT is default if unspecified
+      restricted_rotation: VERY_STRICT # 如果未指定，默认值为 STRICT
 ```
 
-### Limited placing
+### 限制放置
 
-You can customize what blocks a custom block/furniture can be placed on with `limited_placing` subsection. You can use the `roof`, `floor` and `wall` options to dictate where a block can be placed. By default, all are set to `true`.\
-The `type` specifies if it should only be allowed on or denied on specific blocks.\
-If type is `ALLOW` the block can only be placed on the given blocks.\
-If the type is `DENY` can be placed on all blocks not matching the given blocks.\
-There is also a `radius_limitation` option, which allows you to limit the amount of a certain furniture within a radius.
+你可以通过 `limited_placing` 子配置自定义某个自定义方块/家具能放置在哪些方块上。
+可以用 `roof`、`floor` 和 `wall` 来控制是否允许在屋顶、地板或墙壁放置。默认值均为 `true`。
+`type` 用于指定是否只允许 (ALLOW) 或只禁止 (DENY) 放置在特定方块上。
+如果 `type` 为 `ALLOW`，则方块只能放置在指定方块上。
+如果 `type` 为 `DENY`，则可以放置在除指定方块外的所有方块上。
+还有一个 `radius_limitation` 配置，允许你限制某个家具在一定半径内的数量。
 
 ```yaml
 myitem:
@@ -229,21 +230,21 @@ myitem:
           - ruby_ore
 ```
 
-The `block_tags` can be found at [this page](https://minecraft.fandom.com/wiki/Tag#Block_tags). Useful if you want to allow/deny a group of blocks.\
-The `block_types` are materials. Useful if you want to allow/deny a specific list block.\
-The `nexo_blocks` are blocks/furniture from Nexo.\
-This allows all custom blocks and furniture in here, but furniture requires a barrier-hitbox.
+`block_tags` 可在 [此页面](https://minecraft.fandom.com/wiki/Tag#Block_tags) 查看。用于允许/禁止一组方块。
+`block_types` 是材料名，用于允许/禁止特定的方块列表。
+`nexo_blocks` 是 Nexo 中的自定义方块/家具。
+这允许其中所有自定义方块和家具，但家具需要有屏障碰撞箱。
 
-### Storage
+### 储物
 
-This is a sub-mechanic for furniture & noteblock mechanics, that let you make a custom storage container.\
-Essentially a chest, closet or whatever you might want.
+这是家具和音符盒机制的一个子机制，可以让你创建自定义储物容器。
+本质上就是一个箱子、衣柜或其他储物设备。
 
-There's a few different types: _STORAGE, PERSONAL, ENDERCHEST & DISPOSAL_.\
-**STORAGE** is similar to a normal chest. Anyone can open it and view the content of it.\
-**PERSONAL** is essentially a custom enderchest, letting you edit the row-count and so on.\
-**ENDERCHEST** is literally just the enderchest inventory, but letting you make a custom block/furniture to access it.\
-**DISPOSAL** is a custom trashcan, letting you throw items in it, and they will be deleted when closed.\\
+可用的类型有：*STORAGE, PERSONAL, ENDERCHEST 和 DISPOSAL*。
+**STORAGE** 类似于普通箱子，任何人都能打开并查看内容。
+**PERSONAL** 类似自定义末影箱，可以调整行数等。
+**ENDERCHEST** 就是原版末影箱，但允许你用自定义方块/家具来访问。
+**DISPOSAL** 是一个自定义垃圾桶，物品放进去，关闭时会被删除。
 
 ```yaml
 myitem:
@@ -251,16 +252,16 @@ myitem:
     furniture:
       storage:
         type: STORAGE
-        rows: 5                             # Default: 6
-        title: "<red>My Storage"            # Default: "Storage"
-        open_sound: entity.shulker.open     # Default: entity.chest.open
-        close_sound: entity.shulker.close   # Default: entity.chest.close
+        rows: 5                             # 默认值: 6
+        title: "<red>My Storage"            # 默认值: "Storage"
+        open_sound: entity.shulker.open     # 默认值: entity.chest.open
+        close_sound: entity.shulker.close   # 默认值: entity.chest.close
 ```
 
-### Waterloggable
+### 可注水 (Waterloggable)
 
-You can make furniture waterloggable when placed underwater by following the below.\
-This mainly applies to the barrier-hitboxes of your furniture
+你可以让家具在水下放置时变为可注水状态。
+这主要适用于家具的屏障碰撞箱。
 
 ```yaml
 myitem:
@@ -269,10 +270,10 @@ myitem:
       waterloggable: true
 ```
 
-### BlockLocker
+### BlockLocker 支持
 
-You can use this to allow protection via [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/)\
-Valid protectionTypes are CONTAINER, DOOR, ATTACHABLE
+你可以通过 [BlockLocker](https://www.spigotmc.org/resources/blocklocker.3268/) 来允许家具的保护。
+有效的保护类型有 CONTAINER、DOOR、ATTACHABLE。
 
 ```yaml
 myitem:

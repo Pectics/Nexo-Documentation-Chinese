@@ -1,9 +1,9 @@
-# 🪢 Custom Harness (1.21.6+)
+# 🪢 自定义马具 (1.21.6+)
 
-With the new Happy Ghast entity, there is a new type of Equipment, the Harness.\
-Nexo allows you to easily register custom harnesses like [custom-saddles-1.21.5+.md](custom-saddles-1.21.5+.md "mention").
+随着全新实体 Happy Ghast 的加入，出现了一种新的装备类型——马具。
+Nexo 允许你像 [custom-saddles-1.21.5+.md](custom-saddles-1.21.5+.md "mention") 一样轻松注册自定义马具。
 
-To do so simply follow the general pattern for all NexoEquipment. Below is an example;
+要实现这一点，只需遵循所有 NexoEquipment 的通用模式。下面是一个示例：
 
 ```
 forest_harness:
@@ -20,5 +20,5 @@ forest_harness:
       slot: BODY
 ```
 
-Here `Pack.CustomArmor.harness` points to where we put the texture for the harness itself, with `Pack.texture` the icon.\
-We also have to set the `allowed_entity_types` in our EquippableComponent for Nexo to properly handle the remaining properties
+这里的 `Pack.CustomArmor.harness` 指向我们存放马具本体纹理的位置，而 `Pack.texture` 则是图标。
+同时我们还需要在 EquippableComponent 中设置 `allowed_entity_types`，以便 Nexo 正确处理剩余的属性。

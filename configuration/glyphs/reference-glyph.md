@@ -1,7 +1,7 @@
-# 🔗 Reference Glyph
+# 🔗 引用字形
 
-Reference-glyphs are used when you want to "reference" a part of a Multi-Bitmap Glyph.\
-For example if you have a multi-bitmap glyph with 10 emojis, you can reference a specific one like follows
+引用字形用于当你想要“引用”多位图字形中的某一部分时。
+例如，如果你有一个包含 10 个表情的多位图字形，你可以像下面这样引用其中的某一个：
 
 ```yaml
 multi_bitmap:
@@ -9,7 +9,7 @@ multi_bitmap:
   rows: 2
   columns 5
 
-#index is the row and column number
+#index 是行号与列号
 first_emoji:
   reference: multi_bitmap
   index: 1

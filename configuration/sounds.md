@@ -1,55 +1,54 @@
-# 🎵 Sounds
+# 🎵 音效
 
-Nexo allows you to register custom sounds that can be used in `/playsound`or other plugins\
-The most basic of sounds can be configured like below by editing \`plugins/Nexo/sounds.yml\`
+Nexo 允许你注册可在 `/playsound` 或其他插件中使用的自定义音效。
+最基础的音效可以通过编辑 `plugins/Nexo/sounds.yml` 来进行如下配置：
 
 ```yaml
 sounds:
-  - id: block.custom.mysound   # id: namespace:id
-    sound: nexo:mysound.ogg    # References assets/nexo/sounds/mysound.ogg
-    #sounds:                   # Optional, list of sounds where a random will be selected
+  - id: block.custom.mysound   # id: 命名空间:id
+    sound: nexo:mysound.ogg    # 引用 assets/nexo/sounds/mysound.ogg
+    #sounds:                   # 可选，多个音效时会随机选择一个
     #  - mysound.ogg
     #  - mysound2.ogg
 ```
 
-There are also some more properties you can tweak if needed, but for majority of cases, the above default will be enough. A detailed explanation of each property can be found [here](https://minecraft.wiki/w/Sounds.json)
+你也可以根据需要调整更多属性，但大多数情况下，上面的默认配置已经足够。
+每个属性的详细说明可以在 [这里](https://minecraft.wiki/w/Sounds.json) 找到。
 
 ```yaml
 #https://minecraft.wiki/w/Sounds.json
 sounds:
   - id: nexo:music.something
     sound: nexo:music/something.ogg
-    sounds:                                  # Alternative if you have more than 1 sound-file
+    sounds:                                  # 如果有多个音效文件，可在这里列出
       - nexo:music/something.ogg
       - nexo:music/something2.ogg
-    stream: true                             # Optional, defaults to false
-    preload: true                            # Optional, defaults to false
-    volume: 1f                               # Optional, defaults to 1f
-    pitch: 1f                                # Optional, defaults to 1f
-    weight: 1                                # Optional, defaults to 1
-    attenuation_distance: 13                 # Optional, defaults to 16
-    jukebox_playable:                        # Optional, Used for registering a custom music-disc sound
-      comparator_output: 15                  # Optional, defaults to 15, must be in 1..15
-      range: X                               # Optional, If omitted, the sound will have a variable range.
+    stream: true                             # 可选，默认为 false
+    preload: true                            # 可选，默认为 false
+    volume: 1f                               # 可选，默认为 1f
+    pitch: 1f                                # 可选，默认为 1f
+    weight: 1                                # 可选，默认为 1
+    attenuation_distance: 13                 # 可选，默认为 16
+    jukebox_playable:                        # 可选，用于注册自定义唱片音效
+      comparator_output: 15                  # 可选，默认为 15，取值范围 1..15
+      range: X                               # 可选，若省略则音效范围为动态
       length_in_seconds: 2.5
       description: Description
 ```
 
-There is also `jukebox_playable`which is used to register sounds used in custom music discs\
-Nexo will generate the necessary datapack for this, which you can then reference in [JukeboxPlayable-Component](items-advanced.md#components) of your item
+其中的 `jukebox_playable` 用于注册在自定义唱片中播放的音效。
+Nexo 会自动生成所需的数据包，你随后可以在物品的 [JukeboxPlayable-Component](items-advanced.md#components) 中引用它。
 
+#### 替换音效
 
-
-#### Replacing sounds
-
-If you wanna replace sounds already in minecraft, you can do so by doing
+如果你想替换 Minecraft 原有的音效，可以这样做：
 
 ```yaml
 sounds:
-  - id: block.glass.place # removes vanilla sound
+  - id: block.glass.place # 移除原版音效
     sounds: []
     replace: true
-  - id: block.glass.break # replaces vanilla sound with custom sound
+  - id: block.glass.break # 用自定义音效替换原版音效
     sound: nexo:customglasssound
     replace: true
 ```

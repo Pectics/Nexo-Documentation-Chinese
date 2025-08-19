@@ -4,30 +4,30 @@ cover: >-
 coverY: 0
 ---
 
-# 🧑‍🍳 Recipes
+# 🧑‍🍳 配方
 
-Recipes can be created directly in the relevant file within the `Nexo/recipes` directory, or through the ingame RecipeBuilder.\
-The RecipeBuilder can be accessed with the command `/nexo recipes builder`.\
-Drag your desired items into the crafting slots to create your recipe. Make sure to set the "output" slot to the item you want to give.
+配方可以直接在 `Nexo/recipes` 目录中的相关文件里创建，或者通过游戏内的 RecipeBuilder 创建。
+RecipeBuilder 可以通过指令 `/nexo recipes builder` 打开。
+把你想要的物品拖入工作台槽位中即可生成配方。记得将“输出”槽设置为你想要得到的物品。
 
-### Available Recipe Types:
+### 可用的配方类型：
 
-* SHAPELESS - Allows each ingredient to be put in any slot
-* SHAPED - Requires ingredients to be in a specific shape
-* FURNACE - Recipe for the Furnaces
-* BLASTING - Recipe for the Blast Furnace
-* SMOKING - Recipe for the Smoker
-* STONECUTTING - Recipe for the Stone Cutter
-* BREWING - Recipe for the Brewing Stand
-* SMITHING - Recipe for the Smithing Table - This is added via [NexoAddon](https://nexoaddon.gitbook.io/docs/recipes/smithing-recipe)
+* SHAPELESS - 无序合成，材料可以放在任意槽位
+* SHAPED - 有序合成，需要按照特定形状摆放材料
+* FURNACE - 熔炉配方
+* BLASTING - 高炉配方
+* SMOKING - 烟熏炉配方
+* STONECUTTING - 切石机配方
+* BREWING - 酿造台配方
+* SMITHING - 锻造台配方 —— 通过 [NexoAddon](https://nexoaddon.gitbook.io/docs/recipes/smithing-recipe) 添加
 
-## Examples:
+## 示例：
 
-### Shapeless
+### 无序合成 (Shapeless)
 
-`amount` in result specifies how many of said item you should get
+`result` 中的 `amount` 表示你将获得的物品数量
 
-`amount` in ingredients specifies how many slots that item will need
+`ingredients` 中的 `amount` 表示该物品需要占用的槽位数量
 
 ```yaml
 grass_block_shapeless:
@@ -45,9 +45,9 @@ grass_block_shapeless:
 
 <div align="left"><figure><img src="../.gitbook/assets/shapeless.png" alt=""><figcaption></figcaption></figure></div>
 
-### Shaped
+### 有序合成 (Shaped)
 
-You can also use Minecraft tags and Nexo items in recipes
+你也可以在配方中使用 Minecraft 的标签以及 Nexo 物品
 
 ```yaml
 forest_axe:
@@ -67,7 +67,7 @@ forest_axe:
 
 <div align="left"><figure><img src="../.gitbook/assets/shaped.png" alt=""><figcaption></figcaption></figure></div>
 
-### Furnace + Blasting + Smoking
+### 熔炉 + 高炉 + 烟熏炉 (Furnace + Blasting + Smoking)
 
 ```yaml
 raw_iron_block_to_iron:
@@ -82,7 +82,7 @@ raw_iron_block_to_iron:
 
 <div align="left"><figure><img src="../.gitbook/assets/smelting.png" alt=""><figcaption></figcaption></figure></div>
 
-### Stonecutting
+### 切石机 (Stonecutting)
 
 ```yaml
 stripped_spruce_log:
@@ -94,7 +94,7 @@ stripped_spruce_log:
 
 <div align="left"><figure><img src="../.gitbook/assets/stonecutting.png" alt=""><figcaption></figcaption></figure></div>
 
-### Brewing
+### 酿造 (Brewing)
 
 ```yaml
 diamond:

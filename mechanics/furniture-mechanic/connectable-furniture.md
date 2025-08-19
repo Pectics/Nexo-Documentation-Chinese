@@ -1,63 +1,64 @@
 ---
-description: Feature introduced in Nexo 1.5
+description: Nexo 1.5 中引入的特性
 cover: ../../.gitbook/assets/image (11).png
 coverY: 0
 ---
 
-# 🖇️ Connectable Furniture
+# 🖇️ 可连接家具
 
-Nexo allows you to make furniture that can connect together to form different visual furnitures.\
-An example would be a chair that can be turned into a couch, or a small table into a larger one.
+Nexo 允许你制作能够相互连接的家具，从而组成不同的视觉效果。
+例如，椅子可以拼接成沙发，小桌子可以组合成大桌子。
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>Default Connectable furniture included in Nexo's Default Items</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption><p>Nexo 默认物品中包含的可连接家具</p></figcaption></figure>
 
-#### Connection-Types
+#### 连接类型
 
-A connectable furniture is made up of a few different variations.\
-Above you can see an example of all of these. They are used to decide when to display what.\
-**DEFAULT -** The base-item, what is placed when not connected to anything\
-**LEFT & RIGHT -** The left/right end of a connectable furniture\
-**STRAIGHT** - The piece between a LEFT & RIGHT\
-**INNER -** Corner facing inwards\
-**OUTER** - Corner facing outwards
+一个可连接家具由几种不同的变体组成。
+上面展示了所有这些的示例。它们用于决定在什么情况下显示哪种模型。
+**DEFAULT -** 基础物品，当没有与任何东西连接时放置的形态
+**LEFT & RIGHT -** 可连接家具的左右端
+**STRAIGHT -** 左端与右端之间的直线部分
+**INNER -** 向内的拐角
+**OUTER -** 向外的拐角
 
-There are a few different ways to add this mechanic to your furniture-item, **ITEM\_MODEL** & **ITEM** type.
+将该机制添加到家具物品中有几种方式：**ITEM\_MODEL** 和 **ITEM** 类型。
 
-**ITEM\_MODEL** is only available for 1.21.2+ servers but is the recommended approach.\
-This also allows for two different approaches when making the furniture.\
-First using a "BlockState ItemModel" approach. This is the recommended as it limits the amount of files needed in your ResourcePack\
-\
-**ITEM** is an approach mainly intended for 1.20.4 -> 1.21.1 servers.\
-This relies on NexoItems to define the model used for a connection-variation.\
-The end product is the same but compared to ITEM\_MODEL, this approach requires an additional 5 NexoItems, cluttering config-files.
+**ITEM\_MODEL** 仅适用于 1.21.2+ 的服务器，但这是推荐方式。
+它还允许两种不同的制作方式。
+第一种是使用“方块状态 ItemModel”方式。这是推荐方式，因为它减少了资源包中所需的文件数量。
+
+**ITEM** 方式主要适用于 1.20.4 -> 1.21.1 服务器。
+它依赖于 NexoItems 来定义连接变体所使用的模型。
+最终效果相同，但相比 ITEM\_MODEL，这种方式需要额外的 5 个 NexoItems，从而使配置文件变得更繁琐。
 
 {% tabs fullWidth="true" %}
-{% tab title="ITEM_MODEL (1.21.2+)" %}
-ITEM\_MODEL works by directly setting the ItemModel to use on the furniture, instead of going through a NexoItem.\
-This requires that you provide the necessary ItemModels, but they are very easy to make.\
-Nexo does not generate these ItemModels for you.
+{% tab title="ITEM\_MODEL (1.21.2+)" %}
+ITEM\_MODEL 的工作方式是直接为家具设置要使用的 ItemModel，而不是通过 NexoItem。
+这需要你自己提供必要的 ItemModels，但它们非常容易制作。
+Nexo 不会自动为你生成这些 ItemModels。
 
-There is also two approaches you can take to this, Connection-State ItemModel and normal, basic ItemModels.
+这里也有两种可选方式：Connection-State ItemModel 和普通基础 ItemModels。
 
-BlockState ItemModel works by making an ItemModel that shows a different Model based on a property on the item\
-This means you only need to make one ItemModel JSON file.
+BlockState ItemModel 的工作方式是根据物品的属性显示不同的模型。
+这意味着你只需要制作一个 ItemModel JSON 文件。
 
-An ItemModel is used to alter the base-model of an Item and is not the same as CustomModelData.\
-An ItemModel will link to a normal Model, below are examples of the two approaches to use in Nexo.
+ItemModel 用于修改物品的基础模型，它与 CustomModelData 并不相同。
+ItemModel 会链接到一个常规模型，下面展示了在 Nexo 中可用的两种方式的示例。
 
 #### Connection-State ItemModel
 
-This is largely the same as a normal basic ItemModel, but works as a replacement for needing many.\
-It works by selecting a Model based on the "connection-state" on the item.
+它与普通的基础 ItemModel 大体相同，但用作替代大量模型文件。
+它通过根据物品上的 "connection-state" 属性选择不同的模型来工作。
 
-Here is an example of a ConnectionState ItemModel. It should be fairly self-explanatory.\
-The FurnitureItem displayed to the player has a tag on it specifying the connection-state.\
-This in turn tells the client what model to use from this ItemModel.\
-This reduces the amount of ResourcePack files needed & simplifies the NexoItem config aswell.
+下面是一个 ConnectionState ItemModel 的示例，相当直观。
+展示给玩家的家具物品会带有一个标记，指定连接状态。
+客户端则根据该 ItemModel 来决定使用哪一个模型。
+这减少了资源包文件的数量，同时简化了 NexoItem 配置。
 
-This ItemModel should be put in for-example; `Nexo/pack/assets/nexo/items/connectable/connectable.json`
+该 ItemModel 应放置在例如：`Nexo/pack/assets/nexo/items/connectable/connectable.json`
 
 {% code title="connectable.json" lineNumbers="true" fullWidth="true" %}
+
 ```json
 {
   "model": {
@@ -110,10 +111,11 @@ This ItemModel should be put in for-example; `Nexo/pack/assets/nexo/items/connec
 ```
 {% endcode %}
 
-Here is the NexoItem-config utilizing this ConnectionState-ItemModel. We do not need to specify any of the sub-properties.\
-It will simply use the ItemModel we specify in Components section.
+这是使用该 ConnectionState-ItemModel 的 NexoItem 配置。我们无需指定任何子属性。
+它将直接使用我们在 Components 部分指定的 ItemModel。
 
-{% code title="connectable_furniture.yml" %}
+{% code title="connectable\_furniture.yml" %}
+
 ```yaml
 connectable:
   itemname: Connectable
@@ -129,9 +131,9 @@ connectable:
 ```
 {% endcode %}
 
-#### Normal ItemModel
+#### 普通 ItemModel
 
-This requires you to make a basic ItemModel for each of the connection-states, which looks as follows;
+这种方式需要你为每个连接状态制作一个基础 ItemModel，如下所示：
 
 {% code title="connectable.json" %}
 ```json
@@ -144,12 +146,13 @@ This requires you to make a basic ItemModel for each of the connection-states, w
 ```
 {% endcode %}
 
-Now repeat this for all six connection-states, pointing to the different Models and put them in your ResourcePack.\
-Example path being; `Nexo/pack/assets/nexo/items/connectable/connectable.json`
+现在为六种连接状态都重复这个操作，分别指向不同的模型，并将它们放入资源包中。
+例如路径为：`Nexo/pack/assets/nexo/items/connectable/connectable.json`
 
-Then we just need to make the NexoItem config, and point it to the different Connection-State ItemModels it should use.
+然后我们只需要制作 NexoItem 配置，并指定它应使用的不同连接状态 ItemModels。
 
-{% code title="connectable_furniture.yml" %}
+{% code title="connectable\_furniture.yml" %}
+
 ```yaml
 connectable:
   itemname: Connectable
@@ -159,12 +162,12 @@ connectable:
     furniture:
       connectable:
         type: ITEM_MODEL
-        default: nexo:connectable/connectable            # We can reuse this item as we want to use the above ItemModel
-        straight: nexo:connectable/connectable_straight  #If unspecified, will use default + "_straight"
-        left: nexo:connectable/connectable_left          #If unspecified, will use default + "_left"
-        right: nexo:connectable/connectable_right        #If unspecified, will use default + "_right"
-        inner: nexo:connectable/connectable_inner        #If unspecified, will use default + "_inner"
-        outer: nexo:connectable/connectable_outer        #If unspecified, will use default + "_outer"
+        default: nexo:connectable/connectable            # 如果未指定，将使用上方的 ItemModel
+        straight: nexo:connectable/connectable_straight  # 如果未指定，将使用 default + "_straight"
+        left: nexo:connectable/connectable_left          # 如果未指定，将使用 default + "_left"
+        right: nexo:connectable/connectable_right        # 如果未指定，将使用 default + "_right"
+        inner: nexo:connectable/connectable_inner        # 如果未指定，将使用 default + "_inner"
+        outer: nexo:connectable/connectable_outer        # 如果未指定，将使用 default + "_outer"
       hitbox:
         barriers:
         - 0,0,0
@@ -173,8 +176,8 @@ connectable:
 {% endtab %}
 
 {% tab title="ITEM (<1.21.1)" %}
-The ITEM approach relies on NexoItems to choose the Model to display.\
-Below is an example config of a main-item and the different sub-NexoItems for each ConnectionState
+ITEM 方式依赖 NexoItems 来选择显示的模型。
+下面是一个主物品和每个连接状态的子 NexoItems 的配置示例：
 
 ```yaml
 connectable:
@@ -185,18 +188,18 @@ connectable:
     furniture:
       connectable:
         type: ITEM
-        # If default is not specified it will use ItemID by default
-        default: connectable            # We can reuse this item as we want to use the above model
-        straight: connectable_straight  #If unspecified, will use default + "_straight"
-        left: connectable_left          #If unspecified, will use default + "_left"
-        right: connectable_right        #If unspecified, will use default + "_right"
-        inner: connectable_inner        #If unspecified, will use default + "_inner"
-        outer: connectable_outer        #If unspecified, will use default + "_outer"
+        # 如果未指定 default，将默认使用 ItemID
+        default: connectable            # 可以复用该物品，因为我们要使用上面的模型
+        straight: connectable_straight  # 如果未指定，将使用 default + "_straight"
+        left: connectable_left          # 如果未指定，将使用 default + "_left"
+        right: connectable_right        # 如果未指定，将使用 default + "_right"
+        inner: connectable_inner        # 如果未指定，将使用 default + "_inner"
+        outer: connectable_outer        # 如果未指定，将使用 default + "_outer"
       hitbox:
         barriers:
         - 0,0,0
 
-#Dummy NexoItems for linking to a Model
+# 用于链接到模型的虚拟 NexoItems
 connectable_straight:
   excludeFromInventory: true
   excludeFromCommands: true

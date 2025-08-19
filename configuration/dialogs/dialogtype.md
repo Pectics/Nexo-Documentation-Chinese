@@ -17,13 +17,13 @@ layout:
 
 # DialogType
 
-The core of a Dialog is the type of Dialog you want to use.\
-The options are [CONFIRM](https://minecraft.wiki/w/Dialog#confirmation), [LIST](https://minecraft.wiki/w/Dialog#dialog_list), [MULTI](https://minecraft.wiki/w/Dialog#multi_action), [NOTICE](https://minecraft.wiki/w/Dialog#notice) & [LINK](https://minecraft.wiki/w/Dialog#server_links)\
-The default type is NOTICE
+对话框 (Dialog) 的核心在于选择你想要使用的类型。
+可选项包括 [CONFIRM](https://minecraft.wiki/w/Dialog#confirmation)、[LIST](https://minecraft.wiki/w/Dialog#dialog_list)、[MULTI](https://minecraft.wiki/w/Dialog#multi_action)、[NOTICE](https://minecraft.wiki/w/Dialog#notice) 与 [LINK](https://minecraft.wiki/w/Dialog#server_links)。
+默认类型是 NOTICE。
 
 #### DialogAction
 
-Most types have one or more **DialogActions,** which looks as shown below
+大多数类型都包含一个或多个 **DialogAction**，其格式如下所示：
 
 ```yaml
 action:
@@ -32,7 +32,7 @@ action:
   width: 150
 ```
 
-#### Notice Type
+#### Notice 类型
 
 ```yaml
 type: NOTICE
@@ -40,9 +40,9 @@ action:
   ...
 ```
 
-#### Confirmation Type
+#### 确认类型 (Confirmation Type)
 
-Contains two properties, **yes & no**, both which are **DialogActions**
+包含两个属性：**yes** 和 **no**，它们都是 **DialogActions**
 
 ```yaml
 type: CONFIRM
@@ -52,14 +52,14 @@ no:
   ...
 ```
 
-#### Dialog List Type
+#### 列表类型 (Dialog List Type)
 
-Contains a **DialogAction** property, `exitAction`.\
-It also contains `buttonWidth`, `columns` & `dialogs` properties
+包含一个 **DialogAction** 属性 `exitAction`。
+此外还包含 `buttonWidth`、`columns` 与 `dialogs` 属性。
 
-**buttonWidth -** The width of this button, between 1 -> 1024, defaults to 150\
-**columns** - The number of columns, must be 0 or above, defaults to 2\
-**dialogs** - A list of Dialog-IDs to display
+**buttonWidth -** 按钮的宽度，范围 1 -> 1024，默认 150
+**columns -** 列数，必须大于等于 0，默认 2
+**dialogs -** 要显示的对话框 ID 列表
 
 ```yaml
 type: LIST
@@ -71,11 +71,11 @@ exitAction:
   ...
 ```
 
-#### Multi Action Type
+#### 多操作类型 (Multi Action Type)
 
-**exitAction -** A **DialogAction**\
-**actions -** A list of **DialogActions**\
-**columns -** The number of columns, must be 0 or above, defaults to 2
+**exitAction -** 一个 **DialogAction**
+**actions -** 一个 **DialogActions** 列表
+**columns -** 列数，必须大于等于 0，默认 2
 
 ```yaml
 type: MULTI
@@ -85,11 +85,11 @@ exitAction:
 actions: [ ... ]
 ```
 
-#### Server Links Type
+#### 服务器链接类型 (Server Links Type)
 
-**buttonWidth -** The width of this button, between 1 -> 1024, defaults to 150\
-**columns** - The number of columns, must be 0 or above, defaults to 2\
-**exitAction -** A **DialogAction**
+**buttonWidth -** 按钮的宽度，范围 1 -> 1024，默认 150
+**columns -** 列数，必须大于等于 0，默认 2
+**exitAction -** 一个 **DialogAction**
 
 ```yaml
 type: LINK

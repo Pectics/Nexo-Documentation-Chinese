@@ -15,25 +15,25 @@ layout:
     visible: true
 ---
 
-# 🖼️ Custom Paintings
+# 🖼️ 自定义画作
 
 {% hint style="info" %}
-Nexo only generates the Datapack for 1.21.3+ servers. You can still use Custom Paintings on 1.21.1, but you will need to make the datapack manually.
+Nexo 仅会为 1.21.3+ 的服务器生成数据包。你仍然可以在 1.21.1 上使用自定义画作，但需要手动制作数据包。
 {% endhint %}
 
-As of 1.21 you can now make custom paintings via datapacks. Nexo streamlines this process by automating the generation of this datapack based on a `Nexo/paintings.yml` file.
+从 1.21 开始，你可以通过数据包制作自定义画作。Nexo 会基于 `Nexo/paintings.yml` 文件自动生成所需的数据包，从而简化这一流程。
 
-Here is an example of adding a custom painting:
+下面是添加自定义画作的示例：
 
 ```yaml
 paintings:
   nexo:custom_painting:
     author: boy0000
     title: <red>Custom Painting
-    asset_id: nexo:custom_painting  # This is the path to the PNG, namespace:path
-    width: 1     # The width of your painting, in number of blocks it takes up
-    height: 1    # The height of your painting, in number of blocks it takes up
-    random_place: true # Will place at random from the vanilla painting items
+    asset_id: nexo:custom_painting  # PNG 的路径，命名空间:路径
+    width: 1     # 画作的宽度，以占用的方块数计
+    height: 1    # 画作的高度，以占用的方块数计
+    random_place: true # 会从原版画作中随机替换
   nexo:animated_painting:
     author: boy0000
     title: <red>Animated Custom Painting
@@ -42,18 +42,17 @@ paintings:
     height: 1
 ```
 
-Then you simply put the Texture of your painting inside Nexo's ResourcePack where your asset\_id points to.\
-All Painting-Textures are in `assets/NAMESPACE/textures/painting/PATH`\
-The config-format is as with everything else `NAMESPACE:PATH`
+然后，你只需将画作的贴图放入 Nexo 的资源包中，位置由 `asset_id` 指定。
+所有画作贴图的路径为：`assets/NAMESPACE/textures/painting/PATH`。
+配置格式与其他部分相同，使用 `NAMESPACE:PATH`。
 
-For our above example it means we must put the texture inside `assets/nexo/textures/painting/custom_painting.png`&#x20;
+以上示例中，贴图需要放在 `assets/nexo/textures/painting/custom_painting.png`。
 
-### Animated Paintings
+### 动态画作
 
-You can also make animated paintings using an MCMETA-file.\
-The width & height properties are the pixel-size of each frame in your PNG.\
-Below is a basic example, [Minecraft Wiki](https://minecraft.wiki/w/Resource_pack#Texture_animation) has a more in-depth explanation.\
-
+你也可以通过 MCMETA 文件来制作动态画作。
+其中 `width` 和 `height` 属性表示每一帧在 PNG 中的像素大小。
+下面是一个基本示例，更详细的说明可参考 [Minecraft Wiki](https://minecraft.wiki/w/Resource_pack#Texture_animation)。
 
 {% code title="animated_painting.png.mcmeta" %}
 ```json
@@ -68,16 +67,16 @@ Below is a basic example, [Minecraft Wiki](https://minecraft.wiki/w/Resource_pac
 ```
 {% endcode %}
 
-This file needs to be named the same as your texture + .mcmeta\
-For our above example it means we must put the texture inside `assets/nexo/textures/painting/animated_painting.png.mcmeta`&#x20;
+该文件的命名需与贴图相同，并加上 `.mcmeta` 后缀。
+在上面的示例中，路径应为：`assets/nexo/textures/painting/animated_painting.png.mcmeta`。
 
 {% embed url="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FTAoAxayP9PrBtX9UQ5wa%2Fuploads%2FNQBDM0CDYHw3xLDuMFvA%2F2025-07-19%2021-41-23.mp4?alt=media&token=84affb23-a6a7-491e-8053-d3bc14efc2f5" %}
-Static Painting & Animated Painting using MCMeta
+静态画作与基于 MCMeta 的动态画作
 {% endembed %}
 
 ### NexoItem
 
-When your Custom Painting has been registered, you can make a custom NexoItem which will place the given painting. Below is a basic example
+当你的自定义画作被注册后，你可以创建一个自定义 NexoItem 来放置对应的画作。下面是一个基本示例：
 
 ```yaml
 custom_painting:

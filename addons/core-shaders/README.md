@@ -1,7 +1,7 @@
 ---
-description: Core shader addons for Nexo
+description: Nexo 的核心着色器拓展
 ---
 
-# 🧩 Core Shaders
+# 🧩 核心着色器（Core Shaders）
 
-There's a couple core shader addons made for Nexo that are very simple to add by just drag and dropping them into `Nexo/pack/external_packs`&#x20;
+有一些为 Nexo 制作的核心着色器拓展，只需将它们拖放到 `Nexo/pack/external_packs` 中即可轻松添加。

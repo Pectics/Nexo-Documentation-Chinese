@@ -1,7 +1,7 @@
-# 🚧 Barrier Hitbox
+# 🚧 屏障碰撞箱
 
-**Barrier** hitboxes can be formatted at a given offset from the furniture.\
-They also support integer-ranges to shorten repeating lines for larger hitboxes
+**屏障** 碰撞箱可以在家具的指定偏移位置进行设置。
+它们还支持整数范围，用于在大型碰撞箱中简化重复的行。
 
 ```yaml
 myitem:

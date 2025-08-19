@@ -1,31 +1,31 @@
 ---
-description: Various options impacting the plugin in its generality
+description: 各种影响插件整体运行的选项
 hidden: true
 cover: >-
   https://cdn.discordapp.com/attachments/896841738621177896/966825582216237126/unknown.png
 coverY: 0
 ---
 
-# ⚙️ Plugin settings
+# ⚙️ 插件设置
 
-## Item configurations
+## 物品配置
 
-### Overview of Nexo-Configurations?
+### Nexo 配置概览？
 
-Nexo configuration is mainly divided into 3, items, resourcepack & glyphs.\
-These folders contain the majority of custom configurations you need.
+Nexo 的配置主要分为三类：items、resourcepack 和 glyphs。
+这些文件夹包含了大部分你需要的自定义配置。
 
-## ResourcePack
+## 资源包
 
-### Obfuscation
+### 混淆
 
-Obfuscation works by renaming all models, textures and files into random namespaces and paths\
-This is to make it very hard for someone to just download and use your pack outside of your server.\
-It comes with three modes, SIMPLE, FULL & NONE\
-\
-There is also an option to cache the obfuscated pack.\
-This makes it so unless there are changes, Nexo will not reobfuscate the ResourcePack.\
-This makes it so players do not have to redownload the ResourcePack every time your server starts.\\
+混淆通过将所有模型、纹理和文件重命名为随机的命名空间和路径来实现。
+这样可以让别人很难直接下载并在你的服务器外使用你的资源包。
+它有三种模式：SIMPLE、FULL 和 NONE
+
+此外还有一个选项可以缓存混淆后的资源包。
+这意味着除非有更改，Nexo 不会重新混淆资源包。
+这样玩家在每次服务器启动时就不必重新下载资源包。\\
 
 ```yaml
 Pack:
@@ -34,7 +34,7 @@ Pack:
     cache: true
 ```
 
-**NONE** does no obfuscation on the ResourcePack
+**NONE** 不会对资源包进行混淆
 
 ```makefile
 📁ResourcePack
@@ -44,7 +44,7 @@ Pack:
              └── 📑custom_model.json
 ```
 
-**SIMPLE** only obfuscates individual filenames, but retains the original pack-structure
+**SIMPLE** 仅混淆单个文件名，但保留原始的包结构
 
 ```makefile
 📁ResourcePack
@@ -53,7 +53,7 @@ Pack:
         └── 📑02a61ae4-2457-4dfa-91af-9598cd52fd9e.json
 ```
 
-**FULL** obfuscates the entire path
+**FULL** 会混淆整个路径
 
 ```
 📁ResourcePack
@@ -65,48 +65,48 @@ Pack:
 
 ### PackServer
 
-The ResourcePack Nexo generates needs to be hosted somewhere before it can be sent to players.\
-Nexo has two built-in server-options, POLYMATH & SELFHOST
+Nexo 生成的资源包在发送给玩家之前需要托管在某个地方。
+Nexo 内置了两种服务器选项：POLYMATH 和 SELFHOST
 
-**POLYMATH** is Nexo's own remote server\
-It is located in Germany and can therefore be slower depending on your server's location and players download speed\
-\
-SELFHOST is a locally hosted server on the machine and can therefore be faster if your players are closer to it. You will need to manually configure the IP-address to your servers.
+**POLYMATH** 是 Nexo 自带的远程服务器
+它位于德国，因此可能会因为服务器位置和玩家下载速度而变慢
+
+**SELFHOST** 是在本地机器上托管的服务器，如果你的玩家距离较近，速度可能会更快。你需要手动配置服务器的 IP 地址。
 
 ```yaml
 Pack:
   server:
     type: SELFHOST
       selfhost:
-        public_address: 0.0.0.0   # Set to your server's IP
-        port: 8082                # Set to a port you have opened on your server
+        public_address: 0.0.0.0   # 设置为你的服务器 IP
+        port: 8082                # 设置为你在服务器上已开放的端口
       polymath:
         server: atlas.mineinabyss.com
         secret: mineinabyss
 ```
 
-### Dispatch
+### 分发
 
-This section is for handling when the pack should be sent to players.
+这一部分用于控制资源包何时发送给玩家。
 
 ```yaml
 Pack:
   dispatch:
-    # Sends the Resourcepack before the players loads into the server
-    # Might cause issues with large packs due to long download/load times
+    # 在玩家进入服务器之前发送资源包
+    # 大型资源包可能因为下载/加载时间过长而出问题
     send_pre_join: true
     send_on_join: false
-    send_on_reload: true    # Sends the pack to players after using reload-command
-    delay: -1               # Delay before pack is sent, does not apply to PreJoin dispatches
-    mandatory: true         # If declining the ResourcePack should kick the player
-    prompt: "<#fa4943>Accept the pack to enjoy a full <b><gradient:#9055FF:#13E2DA>Nexo</b><#fa4943>experience"
+    send_on_reload: true    # 使用 reload 指令后发送资源包给玩家
+    delay: -1               # 延迟发送资源包，不适用于 PreJoin 分发
+    mandatory: true         # 如果拒绝资源包则踢出玩家
+    prompt: "<#fa4943>接受资源包以完整体验 <b><gradient:#9055FF:#13E2DA>Nexo</b><#fa4943> 的乐趣"
 ```
 
-## Misc
+## 其他
 
 ### hide\_scoreboard\_numbers
 
-This option lets you hide the red scoreboard numbers.
+此选项允许你隐藏计分板上的红色数字。
 
 ```yaml
   hide_scoreboard_numbers: true
@@ -114,7 +114,7 @@ This option lets you hide the red scoreboard numbers.
 
 ### hide\_scoreboard\_background
 
-This option lets you hide the scoreboard background.
+此选项允许你隐藏计分板背景。
 
 ```yaml
   hide_scoreboard_background: true
@@ -126,9 +126,10 @@ This option lets you hide the scoreboard background.
 reset_recipes: true
 ```
 
-This option can causes bug with other recipes plugins. If you notice bugs with a recipes plugin when reloading Nexo, you can disable this option. If you do that, you will have to restart the server to refresh Nexo recipes.
+此选项可能会导致与其他配方插件冲突。如果你在重载 Nexo 时发现配方插件有 bug，可以禁用此选项。
+如果你禁用了它，就需要重启服务器来刷新 Nexo 的配方。
 
-## Nexo Inventory
+## Nexo 背包界面
 
 ```yaml
 nexo_inventory:
@@ -141,5 +142,5 @@ nexo_inventory:
       title: <main_menu_title>ItemID
 ```
 
-This allows you to configure an icon for every section of the Nexo inventory.\
-You can use Nexo ids or Minecraft materials.
+这允许你为 Nexo 背包界面的每个部分配置图标。
+你可以使用 Nexo 的物品 id 或 Minecraft 的材料名。

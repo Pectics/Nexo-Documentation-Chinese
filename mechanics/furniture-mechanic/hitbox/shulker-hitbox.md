@@ -1,15 +1,15 @@
-# 📤 Shulker Hitbox
+# 📤 潜影贝碰撞箱
 
-**Shulker-Entity Hitboxes** takes an **offset, scale, length** and **direction**\
-**Offset** only supports full blocks, as shulkers are forcefully put at a full block. Meaning you cannot offset it by 0.5 blocks\
-**Scale** is a single integer and determines the scale of the furniture. You cannot scale only the height, like with Interaction-Entity Hitboxes\
-**Length** determines the extra length of the hitbox, and can be between 1..2\
-**Direction** determines the way the hitbox faces, if not specified, defaults to UP
+**潜影贝实体碰撞箱** 需要设置 **偏移量 (offset)、缩放比例 (scale)、长度 (length)** 和 **方向 (direction)**。
+**偏移量** 只支持整方块，因为潜影贝会被强制放置在完整方块上，这意味着你不能将其偏移 0.5 格。
+**缩放比例** 是一个整数，决定家具的整体缩放。与交互实体碰撞箱不同，你不能只单独缩放高度。
+**长度** 决定碰撞箱的额外延伸范围，可取值范围为 1..2。
+**方向** 决定碰撞箱的朝向，如果未指定，默认为 UP。
 
 {% hint style="warning" %}
-This is only available for 1.20.5+ servers\
-Should also be noted that the shulker-entity head will be visible on 1.21.1 & below\
-It will be invisible for 1.21.2 and above as long as [https://bugs.mojang.com/browse/MC-278123](https://bugs.mojang.com/browse/MC-278123) is not fixed
+此功能仅适用于 1.20.5+ 服务器。
+另外需要注意，在 1.21.1 及以下版本中，潜影贝的头部是可见的。
+在 1.21.2 及更高版本中，它会变为不可见，前提是 [https://bugs.mojang.com/browse/MC-278123](https://bugs.mojang.com/browse/MC-278123) 仍未修复。
 {% endhint %}
 
 ```yaml
@@ -18,12 +18,12 @@ myitem:
     furniture:
       hitbox:
         shulkers:
-        # - offset scale length direction visible
+        # - 偏移量 缩放比例 长度 方向 是否可见
           - 0,0,0 1.0 1.0
           - 1,0,0 1.2 1.5 EAST
           - -1,0,0 0.8 2.0 UP
 ```
 
 {% hint style="info" %}
-If you struggle with finding the accurate hitbox-size you want for shulker-hitboxes, you can make them temporarily visible. To do this simply add `true` after the length or direction argument
+如果你在设置潜影贝碰撞箱的准确尺寸时遇到困难，可以让它们临时可见。方法很简单：在长度或方向参数后面加上 `true` 即可。
 {% endhint %}
