@@ -682,7 +682,7 @@ myitem:
 
 ```yaml
 my_item:
-  itemname: "<red><bold>Example" #示例名称
+  itemname: "<red><bold>Example"
 ```
 
 ### Displayname
@@ -692,8 +692,8 @@ my_item:
 
 ```yaml
 my_item:
-  displayname: "<red><bold>Example" #示例名称
-  #customname: "<red><bold>Example" #示例名称
+  displayname: "<red><bold>Example"
+  #customname: "<red><bold>Example"
 ```
 
 ### Material
@@ -709,6 +709,8 @@ my_item:
 
 这允许你更改由支持材质（如皮革盔甲）制成的物品的颜色。
 
+{% columns %}
+{% column width="58.333333333333336%" %}
 ```yaml
 my_item:
   color: 3, 252, 136 #rgb
@@ -717,12 +719,16 @@ my_item:
 要更改模型的颜色，你需要设置 Tint 属性。
 在 BlockBench 中设置 `Tint` 属性的方法：
 
-1. 在 BlockBench 中打开模型
-2. 打开“涂装”面板
-3. 选择你想要改变颜色的面
-4. 右键点击该面并勾选 `Tint` 选项
+* 在 BlockBench 中打开模型
+* 打开“涂装”面板
+* 选择你想要改变颜色的面
+* 右键点击该面并勾选 `Tint` 选项
+{% endcolumn %}
 
-![img.png](../.gitbook/assets/tint.png)
+{% column width="41.666666666666664%" %}
+![](../.gitbook/assets/tint.png)
+{% endcolumn %}
+{% endcolumns %}
 
 ### Lore
 
@@ -744,6 +750,10 @@ my_item:
 my_item:
   disable_enchanting: true
 ```
+
+{% hint style="warning" %}
+从 1.21.2+ 开始，你应该使用 **Enchantable-Component**（`Components.enchantable: 0`）。
+{% endhint %}
 
 ### excludeFromInventory
 
@@ -841,4 +851,4 @@ my_item:
 
 ## Mechanics 选项
 
-这部分有专门的页面，你可以在 [这里](broken-reference) 查阅。
+这部分有专门的页面，你可以在 [这里](broken-reference/) 查阅。
