@@ -51,6 +51,7 @@
   * [🛏️ 床机制](mechanics/furniture-mechanic/bed-mechanic.md)
   * [💡 灯光机制](mechanics/furniture-mechanic/light-mechanic.md)
   * [🧑‍🌾 农业机制](mechanics/furniture-mechanic/farming-mechanic.md)
+  * [🚪 门机制](mechanics/furniture-mechanic/door-mechanic.md)
 * [📦 自定义方块机制](mechanics/custom-block-mechanics/README.md)
   * [紫颂方块机制](mechanics/custom-block-mechanics/chorusblock-mechanic.md)
   * [🎶 音符盒机制](mechanics/custom-block-mechanics/noteblock-mechanic/README.md)

@@ -7,23 +7,24 @@
 ## 如何配置你的盔甲？
 
 {% hint style="info" %}
-确保你的 NexoItem 的 itemID 遵循 `armorname_armortype` 的模式。
-比如下面的套装，其余的部分会是 `forest_chestplate`、`forest_leggings` 和 `forest_boots`。
+请确保你的 NexoItem 的 itemID 遵循 `armorname_armortype` 的命名规则。
+在上面的套装示例中，其余部分应为 `ruby_chestplate`、`ruby_leggings` 和 `ruby_boots`。
 
-确保你的盔甲层文件遵循 **armorname**\_armor\_layer\_1/2.png 的格式。
-在下面的示例中，我们需要 **forest**\_armor\_layer\_1.png 和 **forest**\_armor\_layer\_2.png
+请确保你的盔甲贴图文件遵循 **armorname**\_armor\_layer\_1/2.png 的格式。
+在下例中，我们需要 **ruby**\_armor\_layer\_1.png 和 **ruby**\_armor\_layer\_2.png
 {% endhint %}
 
 ```yaml
-forest_helmet:
-  material: PAPER    # 可以是任意材料，可以是盔甲物品或其他东西
+ruby_helmet:
+  displayname: "<gradient:#FA7CBB:#F14658>Ruby Helmet"
+  material: PAPER    # 可以是任意材料，盔甲物品或其他物品
   Pack:
-    # 可选，如果未指定，Nexo 会自动查找任何
-    # 文件名为 armorname_armor_layer_X.png 的纹理
+    parent_model: "item/generated"
+    # 可选项，如果未指定，Nexo 会自动搜索任意符合 armorname_armor_layer_X.png 文件名的纹理
     #CustomArmor:
-    #  layer1: nexo:item/nexo_armors/forest_armor_layer_1
-    #  layer2: nexo:item/nexo_armors/forest_armor_layer_2
-    texture: nexo:item/nexo_armors/forest_helmet
+    #  layer1: default/armors/ruby_armor_layer_1.png
+    #  layer2: default/armors/ruby_armor_layer_2.png
+    texture: default/armors/ruby_helmet
 ```
 
 盔甲正常显示还需要一个可装备组件 (Equippable-Component)。
@@ -32,15 +33,13 @@ forest_helmet:
 其值应为 `nexo:armorname`，在我们的示例中是：
 
 ```yaml
-forest_helmet:
+ruby_helmet:
   Components:
     equippable:
       slot: HEAD
-      model: nexo:forest
+      model: nexo:ruby
 ```
 
 {% hint style="warning" %}
 如果你为头盔使用了 3D 模型，请不要指定 Components.equippable.model
 {% endhint %}
-
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>Nexo 自带的森林盔甲套装（玩家、狼、马和羊驼）</p></figcaption></figure>

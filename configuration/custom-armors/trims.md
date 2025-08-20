@@ -30,8 +30,7 @@ ruby_helmet:
   material: CHAINMAIL_HELMET
   Pack:
     parent_model: "item/generated"
-    # 可选，如果未指定，Nexo 会自动查找任何
-    # 文件名为 armorname_armor_layer_X.png 的纹理
+    # 可选项，如果未指定，Nexo 会自动搜索任意符合 armorname_armor_layer_X.png 的纹理
     #CustomArmor:
     #  layer1: default/armors/ruby_armor_layer_1.png
     #  layer2: default/armors/ruby_armor_layer_2.png
