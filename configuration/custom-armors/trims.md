@@ -1,27 +1,28 @@
-# 基于 Trims (1.20-1.21.1)
+# Trims Based (1.20-1.21.1)
 
-如果使用 Trims 作为自定义盔甲类型，大部分内容都会自动处理。
-TRIMS 方法需要使用锁链盔甲 (CHAINMAIL) 作为基础物品。
+If using trims as your custom-armor type, most things is handled automatically for you.\
+TRIMS method requires using CHAINMAIL as the base-item.
 
-随后 Nexo 会根据你配置的自定义盔甲生成一个数据包。
-由于它依赖数据包，因此每次添加/移除盔甲套装时，服务器都需要完全重启。
+\
+Nexo then generates a datapack based on your configured custom armors.\
+Due to it requiring a datapack, the server needs to do a full restart any time you add/remove an armor-set.
 
 {% hint style="danger" %}
-在将 `CustomArmor.armor_type` 更改为 `TRIMS` 后，你需要：
+After changing `CustomArmor.armor_type` to `TRIMS` you need to:
 
-1. 启动服务器以生成数据包
-2. 停止服务器
-3. 再次启动服务器以启用先前生成的数据包
-   {% endhint %}
+1. Start your server to let datapack be generated
+2. Stop your server
+3. Start it again to enable the previously generated datapack
+{% endhint %}
 
-## 如何配置你的盔甲？
+## How to configure your armor?
 
 {% hint style="info" %}
-确保你的 NexoItem 的 itemID 遵循 `armorname_armortype` 的模式。
-比如下面的套装，其余部分会是 `ruby_chestplate`、`ruby_leggings` 和 `ruby_boots`。
+Make sure that the itemID of your NexoItem follows the pattern `armorname_armortype`.\
+For the rest of the above set it would be `ruby_chestplate`, `ruby_leggings` and `ruby_boots`.
 
-确保你的盔甲层文件遵循 **armorname**\_armor\_layer\_1/2.png 的格式。
-在下面的示例中，我们需要 **ruby**\_armor\_layer\_1.png 和 **ruby**\_armor\_layer\_2.png
+Make sure your armor-layer files follow the format of **armorname**\_armor\_layer\_1/2.png.\
+In the example below, we would need a **ruby**\_armor\_layer\_1.png & **ruby**\_armor\_layer\_2.png
 {% endhint %}
 
 ```yaml
@@ -30,17 +31,18 @@ ruby_helmet:
   material: CHAINMAIL_HELMET
   Pack:
     parent_model: "item/generated"
-    # 可选项，如果未指定，Nexo 会自动搜索任意符合 armorname_armor_layer_X.png 的纹理
+    # Optional, if not specified, Nexo searches for any texture
+    # with the filename armorname_armor_layer_X.png
     #CustomArmor:
     #  layer1: default/armors/ruby_armor_layer_1.png
     #  layer2: default/armors/ruby_armor_layer_2.png
     texture: default/armors/ruby_helmet
 ```
 
-盔甲正常显示还需要一个修饰图案 (trim-pattern)。
-如果没有手动指定，Nexo 会自动分配。
-当然，如果你想，也可以手动指定 `trim_pattern`。
-其值应为 `nexo:armorname`，在我们的示例中是：
+A trim-pattern is also necessary for the armor to display correctly.\
+Nexo will automatically assign it if it has not been manually specified.\
+You can optionally manually assign the `trim_pattern` if you want to.\
+The value should be `nexo:armorname`, so in our example;
 
 ```yaml
 ruby_helmet:
