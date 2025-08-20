@@ -1,37 +1,36 @@
-# Component Based (1.21.2+)
+# 基于组件 (1.21.2+)
 
-If using COMPONENT as your custom-armor type, you are not limited in any way, unlike with TRIMS\
-It also has the benefit of not needing to be based on an armor-item at all, use PAPER if you want to.\
-Every downside there has been to earlier methods is now gone, no restrictions.
+如果使用 COMPONENT 作为你的自定义盔甲类型，那么不会有任何限制，不像 TRIMS 那样。
+它的另一个好处是完全不需要基于盔甲物品，如果你愿意甚至可以使用 PAPER。
+早期方法的所有缺点现在都不存在了，没有任何限制。
 
-## How to configure your armor?
+## 如何配置你的盔甲？
 
 {% hint style="info" %}
-Make sure that the itemID of your NexoItem follows the pattern `armorname_armortype`.\
-For the rest of the above set it would be `ruby_chestplate`, `ruby_leggings` and `ruby_boots`.
+请确保你的 NexoItem 的 itemID 遵循 `armorname_armortype` 的命名规则。
+在上面的套装示例中，其余部分应为 `ruby_chestplate`、`ruby_leggings` 和 `ruby_boots`。
 
-Make sure your armor-layer files follow the format of **armorname**\_armor\_layer\_1/2.png.\
-In the example below, we would need a **ruby**\_armor\_layer\_1.png & **ruby**\_armor\_layer\_2.png
+请确保你的盔甲贴图文件遵循 **armorname**\_armor\_layer\_1/2.png 的格式。
+在下例中，我们需要 **ruby**\_armor\_layer\_1.png 和 **ruby**\_armor\_layer\_2.png
 {% endhint %}
 
 ```yaml
 ruby_helmet:
   displayname: "<gradient:#FA7CBB:#F14658>Ruby Helmet"
-  material: PAPER    # Can be any material, armor-item or anything else
+  material: PAPER    # 可以是任意材料，盔甲物品或其他物品
   Pack:
     parent_model: "item/generated"
-    # Optional, if not specified, Nexo searches for any texture
-    # with the filename armorname_armor_layer_X.png
+    # 可选项，如果未指定，Nexo 会自动搜索任意符合 armorname_armor_layer_X.png 文件名的纹理
     #CustomArmor:
     #  layer1: default/armors/ruby_armor_layer_1.png
     #  layer2: default/armors/ruby_armor_layer_2.png
     texture: default/armors/ruby_helmet
 ```
 
-An Equippable-Component is also necessary for the armor to display correctly.\
-Nexo will automatically assign it if it has not been manually specified.\
-You can optionally manually assign the component if you want to.\
-The value should be `nexo:armorname`, so in our example;
+盔甲正常显示还需要一个可装备组件 (Equippable-Component)。
+如果没有手动指定，Nexo 会自动分配。
+当然，如果你想，也可以手动指定。
+其值应为 `nexo:armorname`，在我们的示例中是：
 
 ```yaml
 ruby_helmet:
@@ -42,5 +41,5 @@ ruby_helmet:
 ```
 
 {% hint style="warning" %}
-If using a 3D model for your helmet, do not specify Components.equippable.model
+如果你为头盔使用了 3D 模型，请不要指定 Components.equippable.model
 {% endhint %}
